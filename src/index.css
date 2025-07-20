@@ -8,35 +8,53 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* EV Grupo Rent Car - Design System baseado no logotipo */
+    --background: 0 0% 98%;
+    --foreground: 0 0% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Cores principais baseadas no logotipo */
+    --primary: 0 85% 50%; /* Vermelho vibrante do logo */
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 0 85% 45%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 0 0% 20%; /* Preto/cinza escuro do logo */
+    --secondary-foreground: 0 0% 100%;
+    --secondary-hover: 0 0% 25%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 0 85% 55%; /* Vermelho mais claro para acentos */
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 0 0% 90%;
+    --input: 0 0% 95%;
+    --ring: 0 85% 50%;
 
-    --radius: 0.5rem;
+    /* Gradientes personalizados */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(var(--muted)));
+    --gradient-button: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-hover)));
+
+    /* Sombras elegantes */
+    --shadow-elegant: 0 10px 40px -10px hsl(var(--primary) / 0.2);
+    --shadow-card: 0 4px 20px -5px hsl(var(--secondary) / 0.15);
+    --shadow-hover: 0 8px 30px -8px hsl(var(--primary) / 0.3);
+
+    /* Animações */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +118,68 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
   }
+}
+
+@layer components {
+  /* Botões com estilo EV Grupo */
+  .botao-primario {
+    @apply bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold 
+           transition-all duration-300 hover:shadow-hover hover:scale-105 
+           hover:bg-primary/90 active:scale-95;
+  }
+
+  .botao-secundario {
+    @apply bg-secondary text-secondary-foreground px-8 py-4 rounded-xl font-semibold 
+           transition-all duration-300 hover:shadow-card hover:scale-105 
+           hover:bg-secondary/90 active:scale-95;
+  }
+
+  .botao-outline {
+    @apply border-2 border-primary text-primary px-8 py-4 rounded-xl font-semibold 
+           transition-all duration-300 hover:bg-primary hover:text-primary-foreground 
+           hover:shadow-hover hover:scale-105 active:scale-95;
+  }
+
+  /* Cards elegantes */
+  .card-elegante {
+    @apply bg-card p-6 rounded-2xl shadow-card transition-all duration-300 
+           hover:shadow-hover hover:-translate-y-2 border border-border/50;
+  }
+
+  /* Gradientes de fundo */
+  .gradiente-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradiente-botao {
+    background: var(--gradient-button);
+  }
+
+  /* Animações personalizadas */
+  .animacao-flutuar {
+    @apply animate-pulse;
+    animation: flutuar 3s ease-in-out infinite;
+  }
+
+  .hover-escalar {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+
+  /* Títulos com estilo */
+  .titulo-secao {
+    @apply text-4xl md:text-5xl font-bold text-secondary mb-6 
+           relative after:content-[''] after:absolute after:bottom-0 after:left-0 
+           after:w-20 after:h-1 after:bg-primary after:rounded-full;
+  }
+
+  .subtitulo {
+    @apply text-xl md:text-2xl text-muted-foreground leading-relaxed;
+  }
+}
+
+@keyframes flutuar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
