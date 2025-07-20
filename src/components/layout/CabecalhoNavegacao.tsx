@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 const itensMenu = [
   { nome: 'Início', caminho: '/' },
   { nome: 'Sobre Nós', caminho: '/sobre' },
-  { nome: 'Frota', caminho: '/frota' },
+  { nome: 'Frotas', caminho: '/frotas' },
   { nome: 'Serviços', caminho: '/servicos' },
   { nome: 'Reservas', caminho: '/reservas' },
   { nome: 'Promoções', caminho: '/promocoes' },

@@ -8,6 +8,11 @@ import RodapePrincipal from "./components/layout/RodapePrincipal";
 import PaginaInicial from "./pages/PaginaInicial";
 import SobreNos from "./pages/SobreNos";
 import Contactos from "./pages/Contactos";
+import Reservas from "./pages/Reservas";
+import Frotas from "./pages/Frotas";
+import Servicos from "./pages/Servicos";
+import Promocoes from "./pages/Promocoes";
+import Clientes from "./pages/Clientes";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +29,11 @@ const App = () => (
             <Routes>
               <Route path="/" element={<PaginaInicial />} />
               <Route path="/sobre" element={<SobreNos />} />
+              <Route path="/frotas" element={<Frotas />} />
+              <Route path="/servicos" element={<Servicos />} />
+              <Route path="/reservas" element={<Reservas />} />
+              <Route path="/promocoes" element={<Promocoes />} />
+              <Route path="/clientes" element={<Clientes />} />
               <Route path="/contactos" element={<Contactos />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
