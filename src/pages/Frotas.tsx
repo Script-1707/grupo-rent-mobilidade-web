@@ -10,37 +10,12 @@ const Frotas = () => {
   const [filtroCombustivel, setFiltroCombustivel] = useState("todos");
 
   const viaturas = [
-    {
-      id: 1,
-      nome: "Toyota Corolla",
-      categoria: "economico",
-      imagem: "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=400",
-      combustivel: "gasolina",
-      lugares: 5,
-      cambio: "automatico",
-      precoDiario: "15.000",
-      precoSemanal: "90.000",
-      precoMensal: "300.000",
-      caracteristicas: ["Ar Condicionado", "Direção Assistida", "Airbags", "Bluetooth"]
-    },
-    {
-      id: 2,
-      nome: "BMW X5",
-      categoria: "luxo",
-      imagem: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400",
-      combustivel: "gasolina",
-      lugares: 7,
-      cambio: "automatico",
-      precoDiario: "45.000",
-      precoSemanal: "280.000",
-      precoMensal: "1.100.000",
-      caracteristicas: ["Couro", "GPS", "Câmera de Ré", "Teto Solar", "Som Premium"]
-    },
+  
     {
       id: 3,
       nome: "Toyota Hilux",
       categoria: "pickup",
-      imagem: "https://images.unsplash.com/photo-1594837226024-6592ad87a5af?w=400",
+      imagem: "/src/assets/cars/ToyotaHilux.png",
       combustivel: "diesel",
       lugares: 5,
       cambio: "manual",
@@ -53,7 +28,7 @@ const Frotas = () => {
       id: 4,
       nome: "Mercedes Sprinter",
       categoria: "van",
-      imagem: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400",
+      imagem: "/src/assets/cars/MercedesSprinter.jpg",
       combustivel: "diesel",
       lugares: 16,
       cambio: "manual",
@@ -62,32 +37,181 @@ const Frotas = () => {
       precoMensal: "900.000",
       caracteristicas: ["16 Lugares", "Ar Condicionado", "Som", "Bagageiro"]
     },
+    // SUVs
     {
       id: 5,
-      nome: "Hyundai Tucson",
+      nome: "Hyundai Creta",
       categoria: "suv",
-      imagem: "https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=400",
+      imagem: "/src/assets/cars/HyundaiCreta.jpg",
       combustivel: "gasolina",
       lugares: 5,
       cambio: "automatico",
-      precoDiario: "22.000",
-      precoSemanal: "140.000",
-      precoMensal: "580.000",
-      caracteristicas: ["SUV", "Ar Condicionado", "Airbags", "Sensor de Ré"]
+      precoDiario: "20.000",
+      precoSemanal: "130.000",
+      precoMensal: "520.000",
+      caracteristicas: ["SUV", "Ar Condicionado", "Airbags", "Bluetooth"]
     },
     {
       id: 6,
-      nome: "Honda Civic",
-      categoria: "intermedio",
-      imagem: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=400",
+      nome: "Hyundai Santa Fe",
+      categoria: "suv",
+      imagem: "/src/assets/cars/HyundaiSantaFe.jpg",
+      combustivel: "gasolina",
+      lugares: 7,
+      cambio: "automatico",
+      precoDiario: "28.000",
+      precoSemanal: "170.000",
+      precoMensal: "700.000",
+      caracteristicas: ["SUV", "Ar Condicionado", "Teto Solar", "Sensor de Ré"]
+    },
+    {
+      id: 7,
+      nome: "Kia Sportage",
+      categoria: "suv",
+      imagem: "/src/assets/cars/KiaSportage.jpg",
       combustivel: "gasolina",
       lugares: 5,
       cambio: "automatico",
-      precoDiario: "18.000",
-      precoSemanal: "115.000",
-      precoMensal: "480.000",
-      caracteristicas: ["Ar Condicionado", "GPS", "Câmera de Ré", "Bluetooth"]
-    }
+      precoDiario: "21.000",
+      precoSemanal: "135.000",
+      precoMensal: "540.000",
+      caracteristicas: ["SUV", "Ar Condicionado", "Airbags", "Bluetooth"]
+    },
+    {
+      id: 8,
+      nome: "Range Rover 2025",
+      categoria: "luxo",
+      imagem: "/src/assets/cars/RangeRover2025.png",
+      combustivel: "gasolina",
+      lugares: 5,
+      cambio: "automatico",
+      precoDiario: "60.000",
+      precoSemanal: "350.000",
+      precoMensal: "1.400.000",
+      caracteristicas: ["Couro", "GPS", "Teto Solar", "Som Premium"]
+    },
+    // Vans
+    {
+      id: 9,
+      nome: "Toyota Hiace",
+      categoria: "van",
+      imagem: "/src/assets/cars/ToyotaHiace.png",
+      combustivel: "diesel",
+      lugares: 15,
+      cambio: "manual",
+      precoDiario: "32.000",
+      precoSemanal: "200.000",
+      precoMensal: "820.000",
+      caracteristicas: ["15 Lugares", "Ar Condicionado", "Bagageiro"]
+    },
+    {
+      id: 10,
+      nome: "Mercedes Viano",
+      categoria: "van",
+      imagem: "/src/assets/cars/MercedesViano.jpg",
+      combustivel: "diesel",
+      lugares: 8,
+      cambio: "automatico",
+      precoDiario: "38.000",
+      precoSemanal: "240.000",
+      precoMensal: "950.000",
+      caracteristicas: ["8 Lugares", "Ar Condicionado", "Som"]
+    },
+    // Pickups
+    {
+      id: 11,
+      nome: "Toyota Hilux",
+      categoria: "pickup",
+      imagem: "/src/assets/cars/ToyotaHilux.png",
+      combustivel: "diesel",
+      lugares: 5,
+      cambio: "manual",
+      precoDiario: "25.000",
+      precoSemanal: "160.000",
+      precoMensal: "650.000",
+      caracteristicas: ["4x4", "Ar Condicionado", "Caçamba", "Tração Integral"]
+    },
+    // Econômicos
+    {
+      id: 12,
+      nome: "Suzuki Celerio",
+      categoria: "economico",
+      imagem: "/src/assets/cars/SuzukiCelerio.jpg",
+      combustivel: "gasolina",
+      lugares: 5,
+      cambio: "manual",
+      precoDiario: "12.000",
+      precoSemanal: "72.000",
+      precoMensal: "250.000",
+      caracteristicas: ["Ar Condicionado", "Airbags", "Bluetooth"]
+    },
+    {
+      id: 13,
+      nome: "Suzuki SWIFT",
+      categoria: "economico",
+      imagem: "/src/assets/cars/SuzukiSWIFT.jpg",
+      combustivel: "gasolina",
+      lugares: 5,
+      cambio: "manual",
+      precoDiario: "13.000",
+      precoSemanal: "78.000",
+      precoMensal: "270.000",
+      caracteristicas: ["Ar Condicionado", "Airbags", "Bluetooth"]
+    },
+    // Intermédios
+    {
+      id: 14,
+      nome: "Kia Rio Pride",
+      categoria: "intermedio",
+      imagem: "/src/assets/cars/KiaRioPride.jpg",
+      combustivel: "gasolina",
+      lugares: 5,
+      cambio: "manual",
+      precoDiario: "16.000",
+      precoSemanal: "96.000",
+      precoMensal: "320.000",
+      caracteristicas: ["Ar Condicionado", "Airbags", "Bluetooth"]
+    },
+    // Luxo
+    {
+      id: 15,
+      nome: "Jaguar XRF",
+      categoria: "luxo",
+      imagem: "/src/assets/cars/JaguarXRF.jpg",
+      combustivel: "gasolina",
+      lugares: 5,
+      cambio: "automatico",
+      precoDiario: "55.000",
+      precoSemanal: "330.000",
+      precoMensal: "1.300.000",
+      caracteristicas: ["Couro", "GPS", "Teto Solar", "Som Premium"]
+    },
+    {
+      id: 16,
+      nome: "Lexus ES-350",
+      categoria: "luxo",
+      imagem: "/src/assets/cars/LexusES-350.jpg",
+      combustivel: "gasolina",
+      lugares: 5,
+      cambio: "automatico",
+      precoDiario: "50.000",
+      precoSemanal: "300.000",
+      precoMensal: "1.200.000",
+      caracteristicas: ["Couro", "GPS", "Teto Solar", "Som Premium"]
+    },
+    {
+      id: 17,
+      nome: "Mercedes G63 AMG",
+      categoria: "luxo",
+      imagem: "/src/assets/cars/MercedesG63AMG.png",
+      combustivel: "gasolina",
+      lugares: 5,
+      cambio: "automatico",
+      precoDiario: "70.000",
+      precoSemanal: "420.000",
+      precoMensal: "1.700.000",
+      caracteristicas: ["Couro", "GPS", "Teto Solar", "Som Premium"]
+    },
   ];
 
   const categorias = [
@@ -114,7 +238,7 @@ const Frotas = () => {
   });
 
   const getCategoriaLabel = (categoria: string) => {
-    switch(categoria) {
+    switch (categoria) {
       case "economico": return "Económico";
       case "intermedio": return "Intermédio";
       case "luxo": return "Luxo";
@@ -126,7 +250,7 @@ const Frotas = () => {
   };
 
   const getCategoriaColor = (categoria: string) => {
-    switch(categoria) {
+    switch (categoria) {
       case "economico": return "bg-green-100 text-green-800";
       case "intermedio": return "bg-blue-100 text-blue-800";
       case "luxo": return "bg-purple-100 text-purple-800";
@@ -191,8 +315,8 @@ const Frotas = () => {
             {viaturasFiltradas.map((viatura) => (
               <Card key={viatura.id} className="overflow-hidden hover-scale shadow-elegant">
                 <div className="relative">
-                  <img 
-                    src={viatura.imagem} 
+                  <img
+                    src={viatura.imagem}
                     alt={viatura.nome}
                     className="w-full h-48 object-cover"
                   />
@@ -200,7 +324,7 @@ const Frotas = () => {
                     {getCategoriaLabel(viatura.categoria)}
                   </Badge>
                 </div>
-                
+
                 <CardHeader>
                   <CardTitle className="text-xl">{viatura.nome}</CardTitle>
                   <div className="flex items-center gap-4 text-sm text-muted-foreground">
