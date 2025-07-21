@@ -256,7 +256,7 @@ const PaginaInicial = () => {
               <p className="text-muted-foreground mb-4">
                 Fale connosco instantaneamente pelo WhatsApp
               </p>
-              <span className="text-green-600 font-semibold">+244 924 000 000</span>
+              <span className="text-green-600 font-semibold">+244 976 045 538</span>
             </a>
 
             {/* Localização */}

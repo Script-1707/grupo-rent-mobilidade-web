@@ -29,23 +29,23 @@ const informacoesContacto = [
     icone: Phone,
     titulo: 'Telefones',
     conteudo: [
-      '+244 924 000 000 (Principal)',
-      '+244 900 000 000 (Emergência 24h)',
+      '+244 976 045 538(Principal)',
+      '+244 976 045 538 (Emergência 24h)',
       '+244 923 111 222 (Reservas)'
     ],
     acao: 'Ligar Agora',
-    link: 'tel:+244924000000'
+    link: 'tel:+244976045538'
   },
   {
     icone: Mail,
     titulo: 'E-mails',
     conteudo: [
-      'info@evgruporentcar.ao',
-      'reservas@evgruporentcar.ao',
-      'comercial@evgruporentcar.ao'
+      'info@evgrupo.com',
+      'reservas@evgrupo.com',
+      'comercial@evgrupo.com'
     ],
     acao: 'Enviar E-mail',
-    link: 'mailto:info@evgruporentcar.ao'
+    link: 'mailto:info@evgrupo.com'
   },
   {
     icone: Clock,
@@ -320,7 +320,7 @@ const Contactos = () => {
                       </p>
                     </div>
                     <div className="text-green-600 font-semibold">
-                      +244 924 000 000
+                      +244 976 045 538
                     </div>
                   </a>
 
