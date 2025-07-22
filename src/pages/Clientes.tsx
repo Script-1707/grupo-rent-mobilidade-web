@@ -7,32 +7,32 @@ const Clientes = () => {
   const parceiros = [
     {
       nome: "Sonangol",
-      logo: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=200&h=100&fit=crop",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Sonangol_Logo.svg/1200px-Sonangol_Logo.svg.png",
       categoria: "Energia"
     },
     {
       nome: "Banco BAI",
-      logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&h=100&fit=crop",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/4/4f/BAI_-_.jpg",
       categoria: "Financeiro"
     },
     {
       nome: "Unitel",
-      logo: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=200&h=100&fit=crop",
+      logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStk0sDld9leUURYWbYgwoZhRZGr0dj8iTjcg&s",
       categoria: "Telecomunicações"
     },
     {
       nome: "Hotel Presidente",
-      logo: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=200&h=100&fit=crop",
+      logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGTGMp1mZCdY41rEVHZGHBKLlzf-Zt6PPXLQ&s",
       categoria: "Hotelaria"
     },
     {
       nome: "Embaixada do Brasil",
-      logo: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=200&h=100&fit=crop",
+      logo: "https://media.licdn.com/dms/image/v2/C4E0BAQHegVVFip8MOg/company-logo_200_200/company-logo_200_200/0/1630611203754?e=2147483647&v=beta&t=27WwnSzsRS2QPJCBJqEu8FSG6dZdate5AiAqFoWrMqI",
       categoria: "Diplomático"
     },
     {
       nome: "Total Energies",
-      logo: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=200&h=100&fit=crop",
+      logo: "https://media.licdn.com/dms/image/sync/v2/D4D27AQHWDnHxSpwsig/articleshare-shrink_800/articleshare-shrink_800/0/1752125202989?e=2147483647&v=beta&t=FtikeNqkkkB9SbdWbwDM54wvjZMxE3cswpdE9ZGkgG4",
       categoria: "Energia"
     }
   ];
@@ -200,8 +200,8 @@ const Clientes = () => {
             {parceiros.map((parceiro, index) => (
               <div key={index} className="group">
                 <Card className="h-32 flex items-center justify-center hover-scale bg-white">
-                  <img 
-                    src={parceiro.logo} 
+                  <img
+                    src={parceiro.logo}
                     alt={parceiro.nome}
                     className="max-w-full max-h-20 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
                   />
@@ -227,15 +227,15 @@ const Clientes = () => {
               <Card key={index} className="hover-scale shadow-elegant">
                 <CardHeader>
                   <div className="flex items-center gap-4">
-                    <img 
-                      src={depoimento.foto} 
+                    <img
+                      src={depoimento.foto}
                       alt={depoimento.nome}
                       className="w-16 h-16 rounded-full object-cover"
                     />
                     <div>
                       <CardTitle className="text-lg">{depoimento.nome}</CardTitle>
                       <CardDescription>
-                        {depoimento.cargo}<br/>
+                        {depoimento.cargo}<br />
                         <span className="text-primary font-medium">{depoimento.empresa}</span>
                       </CardDescription>
                     </div>

@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 const itensMenu = [
   { nome: 'Início', caminho: '/' },
   { nome: 'Sobre Nós', caminho: '/sobre' },
-  { nome: 'Frotas', caminho: '/frotas' },
+  { nome: 'Frota de Viaturas', caminho: '/frotas' },
   { nome: 'Serviços', caminho: '/servicos' },
   { nome: 'Reservas', caminho: '/reservas' },
   { nome: 'Promoções', caminho: '/promocoes' },
@@ -64,20 +64,19 @@ const CabecalhoNavegacao = () => {
       </div>
 
       {/* Navegação principal */}
-      <header 
-        className={`sticky top-0 z-50 transition-all duration-300 ${
-          scrolled 
-            ? 'bg-background/95 backdrop-blur-md shadow-card' 
+      <header
+        className={`sticky top-0 z-50 transition-all duration-300 ${scrolled
+            ? 'bg-background/95 backdrop-blur-md shadow-card'
             : 'bg-background'
-        }`}
+          }`}
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-3">
-              <img 
-                src="/lovable-uploads/e0189d0b-1841-48f6-a716-d4575b450a80.png" 
-                alt="EV Grupo Rent Car" 
+              <img
+                src="/lovable-uploads/e0189d0b-1841-48f6-a716-d4575b450a80.png"
+                alt="EV Grupo Rent Car"
                 className="h-12 w-auto"
               />
             </Link>
@@ -88,9 +87,8 @@ const CabecalhoNavegacao = () => {
                 <Link
                   key={item.caminho}
                   to={item.caminho}
-                  className={`text-foreground hover:text-primary transition-colors duration-300 font-medium relative group ${
-                    localizacao.pathname === item.caminho ? 'text-primary' : ''
-                  }`}
+                  className={`text-foreground hover:text-primary transition-colors duration-300 font-medium relative group ${localizacao.pathname === item.caminho ? 'text-primary' : ''
+                    }`}
                 >
                   {item.nome}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
@@ -128,9 +126,8 @@ const CabecalhoNavegacao = () => {
                     key={item.caminho}
                     to={item.caminho}
                     onClick={fecharMenu}
-                    className={`text-foreground hover:text-primary transition-colors duration-300 font-medium py-2 ${
-                      localizacao.pathname === item.caminho ? 'text-primary' : ''
-                    }`}
+                    className={`text-foreground hover:text-primary transition-colors duration-300 font-medium py-2 ${localizacao.pathname === item.caminho ? 'text-primary' : ''
+                      }`}
                   >
                     {item.nome}
                   </Link>

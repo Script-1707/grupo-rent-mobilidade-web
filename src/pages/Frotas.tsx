@@ -10,12 +10,12 @@ const Frotas = () => {
   const [filtroCombustivel, setFiltroCombustivel] = useState("todos");
 
   const viaturas = [
-  
+
     {
       id: 3,
       nome: "Toyota Hilux",
       categoria: "pickup",
-      imagem: "/src/assets/cars/ToyotaHilux.png",
+      imagem: "cars/ToyotaHilux.png",
       combustivel: "diesel",
       lugares: 5,
       cambio: "manual",
@@ -28,7 +28,7 @@ const Frotas = () => {
       id: 4,
       nome: "Mercedes Sprinter",
       categoria: "van",
-      imagem: "/src/assets/cars/MercedesSprinter.jpg",
+      imagem: "cars/MercedesSprinter.jpg",
       combustivel: "diesel",
       lugares: 16,
       cambio: "manual",
@@ -42,7 +42,7 @@ const Frotas = () => {
       id: 5,
       nome: "Hyundai Creta",
       categoria: "suv",
-      imagem: "/src/assets/cars/HyundaiCreta.jpg",
+      imagem: "cars/HyundaiCreta.jpg",
       combustivel: "gasolina",
       lugares: 5,
       cambio: "automatico",
@@ -55,7 +55,7 @@ const Frotas = () => {
       id: 6,
       nome: "Hyundai Santa Fe",
       categoria: "suv",
-      imagem: "/src/assets/cars/HyundaiSantaFe.jpg",
+      imagem: "cars/HyundaiSantaFe.jpg",
       combustivel: "gasolina",
       lugares: 7,
       cambio: "automatico",
@@ -68,7 +68,7 @@ const Frotas = () => {
       id: 7,
       nome: "Kia Sportage",
       categoria: "suv",
-      imagem: "/src/assets/cars/KiaSportage.jpg",
+      imagem: "cars/KiaSportage.jpg",
       combustivel: "gasolina",
       lugares: 5,
       cambio: "automatico",
@@ -81,7 +81,7 @@ const Frotas = () => {
       id: 8,
       nome: "Range Rover 2025",
       categoria: "luxo",
-      imagem: "/src/assets/cars/RangeRover2025.png",
+      imagem: "cars/RangeRover2025.png",
       combustivel: "gasolina",
       lugares: 5,
       cambio: "automatico",
@@ -95,7 +95,7 @@ const Frotas = () => {
       id: 9,
       nome: "Toyota Hiace",
       categoria: "van",
-      imagem: "/src/assets/cars/ToyotaHiace.png",
+      imagem: "cars/ToyotaHiace.png",
       combustivel: "diesel",
       lugares: 15,
       cambio: "manual",
@@ -108,7 +108,7 @@ const Frotas = () => {
       id: 10,
       nome: "Mercedes Viano",
       categoria: "van",
-      imagem: "/src/assets/cars/MercedesViano.jpg",
+      imagem: "cars/MercedesViano.jpg",
       combustivel: "diesel",
       lugares: 8,
       cambio: "automatico",
@@ -122,7 +122,7 @@ const Frotas = () => {
       id: 11,
       nome: "Toyota Hilux",
       categoria: "pickup",
-      imagem: "/src/assets/cars/ToyotaHilux.png",
+      imagem: "cars/ToyotaHilux.png",
       combustivel: "diesel",
       lugares: 5,
       cambio: "manual",
@@ -136,7 +136,7 @@ const Frotas = () => {
       id: 12,
       nome: "Suzuki Celerio",
       categoria: "economico",
-      imagem: "/src/assets/cars/SuzukiCelerio.jpg",
+      imagem: "cars/SuzukiCelerio.jpg",
       combustivel: "gasolina",
       lugares: 5,
       cambio: "manual",
@@ -149,7 +149,7 @@ const Frotas = () => {
       id: 13,
       nome: "Suzuki SWIFT",
       categoria: "economico",
-      imagem: "/src/assets/cars/SuzukiSWIFT.jpg",
+      imagem: "cars/SuzukiSWIFT.jpg",
       combustivel: "gasolina",
       lugares: 5,
       cambio: "manual",
@@ -163,7 +163,7 @@ const Frotas = () => {
       id: 14,
       nome: "Kia Rio Pride",
       categoria: "intermedio",
-      imagem: "/src/assets/cars/KiaRioPride.jpg",
+      imagem: "cars/KiaRioPride.jpg",
       combustivel: "gasolina",
       lugares: 5,
       cambio: "manual",
@@ -177,7 +177,7 @@ const Frotas = () => {
       id: 15,
       nome: "Jaguar XRF",
       categoria: "luxo",
-      imagem: "/src/assets/cars/JaguarXRF.jpg",
+      imagem: "cars/JaguarXRF.jpg",
       combustivel: "gasolina",
       lugares: 5,
       cambio: "automatico",
@@ -190,7 +190,7 @@ const Frotas = () => {
       id: 16,
       nome: "Lexus ES-350",
       categoria: "luxo",
-      imagem: "/src/assets/cars/LexusES-350.jpg",
+      imagem: "cars/LexusES-350.jpg",
       combustivel: "gasolina",
       lugares: 5,
       cambio: "automatico",
@@ -203,7 +203,7 @@ const Frotas = () => {
       id: 17,
       nome: "Mercedes G63 AMG",
       categoria: "luxo",
-      imagem: "/src/assets/cars/MercedesG63AMG.png",
+      imagem: "cars/MercedesG63AMG.png",
       combustivel: "gasolina",
       lugares: 5,
       cambio: "automatico",
@@ -318,7 +318,7 @@ const Frotas = () => {
                   <img
                     src={viatura.imagem}
                     alt={viatura.nome}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-50 object-cover"
                   />
                   <Badge className={`absolute top-4 left-4 ${getCategoriaColor(viatura.categoria)}`}>
                     {getCategoriaLabel(viatura.categoria)}
