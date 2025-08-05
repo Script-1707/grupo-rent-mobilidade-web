@@ -110,9 +110,7 @@ const RodapePrincipal = () => {
                 <MapPin className="w-5 h-5 text-primary mt-1" />
                 <div>
                   <p className="text-secondary-foreground/80">
-                    Rua da Missão, 123<br />
-                    Maianga, Luanda<br />
-                    Angola
+                    Luanda, Corimba - Frente a ENAPP
                   </p>
                 </div>
               </div>
@@ -121,7 +119,7 @@ const RodapePrincipal = () => {
                 <Phone className="w-5 h-5 text-primary" />
                 <div>
                   <p className="text-secondary-foreground/80">+244 976 045 538</p>
-                  <p className="text-secondary-foreground/60 text-sm">Emergência 24h: +244 900 000 000</p>
+                  <p className="text-secondary-foreground/60 text-sm">+244 924 709 966</p>
                 </div>
               </div>
               
@@ -135,7 +133,6 @@ const RodapePrincipal = () => {
                 <div>
                   <p className="text-secondary-foreground/80">Segunda - Sexta: 8h - 18h</p>
                   <p className="text-secondary-foreground/80">Sábado: 8h - 14h</p>
-                  <p className="text-secondary-foreground/80">Domingo: Fechado</p>
                 </div>
               </div>
             </div>

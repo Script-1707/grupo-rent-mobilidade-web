@@ -9,7 +9,7 @@ const itensMenu = [
   { nome: 'Frota de Viaturas', caminho: '/frotas' },
   { nome: 'Serviços', caminho: '/servicos' },
   { nome: 'Reservas', caminho: '/reservas' },
-  { nome: 'Promoções', caminho: '/promocoes' },
+  // { nome: 'Promoções', caminho: '/promocoes' },
   { nome: 'Clientes', caminho: '/clientes' },
   { nome: 'Contactos', caminho: '/contactos' }
 ];
@@ -57,7 +57,7 @@ const CabecalhoNavegacao = () => {
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <span>Contacto alternativo: +244 976 045 538</span>
+              <span>Contacto alternativo: +244 924 709 966</span>
             </div>
           </div>
         </div>
