@@ -10,6 +10,7 @@ import { Calendar, MapPin, Clock, Shield, Car, Phone } from "lucide-react";
 const Reservas = () => {
   const [reserva, setReserva] = useState({
     tipoViatura: "",
+    viatura: "",
     localLevantamento: "",
     localDevolucao: "",
     dataLevantamento: "",
