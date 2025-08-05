@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { 
-  MapPin, 
-  Phone, 
-  Mail, 
+import {
+  MapPin,
+  Phone,
+  Mail,
   Clock,
   MessageCircle,
   Send,
@@ -18,20 +18,18 @@ const informacoesContacto = [
     icone: MapPin,
     titulo: 'Localização',
     conteudo: [
-      'Rua da Missão, 123',
-      'Maianga, Luanda',
-      'Angola'
+      'Luanda, Corimba ',
+      'Frente a ENAPP',
     ],
     acao: 'Ver no Mapa',
-    link: '#'
+    link: 'https://maps.app.goo.gl/kthf7RrDTnuc2Vhi9'
   },
   {
     icone: Phone,
     titulo: 'Telefones',
     conteudo: [
       '+244 976 045 538(Principal)',
-      '+244 976 045 538 (Emergência 24h)',
-      '+244 923 111 222 (Reservas)'
+      '+244 924 709 966 (Alternativo)',
     ],
     acao: 'Ligar Agora',
     link: 'tel:+244976045538'
@@ -40,12 +38,11 @@ const informacoesContacto = [
     icone: Mail,
     titulo: 'E-mails',
     conteudo: [
-      'info@evgrupo.com',
-      'reservas@evgrupo.com',
-      'comercial@evgrupo.com'
+      'evgrupoprest@gmail.com',
+      '______________________',
     ],
     acao: 'Enviar E-mail',
-    link: 'mailto:info@evgrupo.com'
+    link: 'mailto:evgrupoprest@gmail.com'
   },
   {
     icone: Clock,
@@ -53,11 +50,9 @@ const informacoesContacto = [
     conteudo: [
       'Segunda - Sexta: 8h - 18h',
       'Sábado: 8h - 14h',
-      'Domingo: Fechado',
-      'Emergência: 24h (todos os dias)'
     ],
-    acao: null,
-    link: null
+    acao: 'Reservar Agora',
+    link: '/reservas'
   }
 ];
 
@@ -111,7 +106,7 @@ const Contactos = () => {
               Contacte-nos
             </h1>
             <p className="text-xl md:text-2xl leading-relaxed">
-              Estamos aqui para ajudá-lo. Entre em contacto connosco através de qualquer 
+              Estamos aqui para ajudá-lo. Entre em contacto connosco através de qualquer
               um dos nossos canais de atendimento.
             </p>
           </div>
@@ -127,11 +122,11 @@ const Contactos = () => {
                 <div className="flex items-center justify-center w-16 h-16 bg-primary/10 rounded-2xl mb-6 mx-auto group-hover:bg-primary/20 transition-colors">
                   <info.icone className="w-8 h-8 text-primary" />
                 </div>
-                
+
                 <h3 className="text-xl font-bold text-secondary mb-4">
                   {info.titulo}
                 </h3>
-                
+
                 <div className="space-y-2 mb-6">
                   {info.conteudo.map((item, i) => (
                     <p key={i} className="text-muted-foreground text-sm">
@@ -139,10 +134,10 @@ const Contactos = () => {
                     </p>
                   ))}
                 </div>
-                
+
                 {info.acao && (
-                  <a 
-                    href={info.link || '#'} 
+                  <a
+                    href={info.link || '#'}
                     className="inline-flex items-center text-primary hover:text-primary-hover font-semibold transition-colors"
                   >
                     {info.acao}
@@ -159,7 +154,7 @@ const Contactos = () => {
       <section className="py-20 bg-muted">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            
+
             {/* Formulário de Contacto */}
             <div>
               <h2 className="titulo-secao">Envie-nos uma Mensagem</h2>
@@ -184,7 +179,7 @@ const Contactos = () => {
                       placeholder="Seu nome completo"
                     />
                   </div>
-                  
+
                   <div>
                     <label htmlFor="telefone" className="block text-sm font-medium text-secondary mb-2">
                       Telefone *
@@ -197,7 +192,7 @@ const Contactos = () => {
                       value={formulario.telefone}
                       onChange={handleInputChange}
                       className="w-full"
-                      placeholder="+244 900 000 000"
+                      placeholder="+244 976045538"
                     />
                   </div>
                 </div>
@@ -249,9 +244,9 @@ const Contactos = () => {
                   />
                 </div>
 
-                <Button 
-                  type="submit" 
-                  className="botao-primario w-full" 
+                <Button
+                  type="submit"
+                  className="botao-primario w-full"
                   disabled={enviando}
                 >
                   {enviando ? (
@@ -275,7 +270,7 @@ const Contactos = () => {
 
             {/* Mapa e Contactos Rápidos */}
             <div className="space-y-8">
-              
+
               {/* Mapa */}
               <div>
                 <h3 className="text-2xl font-bold text-secondary mb-4">
@@ -288,11 +283,19 @@ const Contactos = () => {
                       Showroom Principal
                     </h4>
                     <p className="text-muted-foreground">
-                      Rua da Missão, 123<br />
-                      Maianga, Luanda, Angola
+                      Luanda, Corimba - Frente a ENAPP
                     </p>
-                    <Button className="botao-outline mt-4">
-                      Abrir no Google Maps
+                    <Button
+                      className="botao-outline mt-4"
+                      asChild
+                    >
+                      <a
+                        href="https://maps.app.goo.gl/kthf7RrDTnuc2Vhi9"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Abrir no Google Maps
+                      </a>
                     </Button>
                   </div>
                 </div>
@@ -303,11 +306,11 @@ const Contactos = () => {
                 <h3 className="text-2xl font-bold text-secondary mb-6">
                   Contactos Rápidos
                 </h3>
-                
+
                 <div className="space-y-4">
                   {/* WhatsApp */}
-                  <a 
-                    href="https://wa.me/244924000000"
+                  <a
+                    href="https://wa.me/244976045538"
                     className="card-elegante flex items-center space-x-4 hover:bg-green-50 transition-colors group"
                   >
                     <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center group-hover:bg-green-200 transition-colors">
@@ -325,27 +328,27 @@ const Contactos = () => {
                   </a>
 
                   {/* Emergência */}
-                  <a 
-                    href="tel:+244900000000"
+                  <a
+                    href="tel:+244976045538"
                     className="card-elegante flex items-center space-x-4 hover:bg-red-50 transition-colors group"
                   >
                     <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center group-hover:bg-red-200 transition-colors">
                       <Phone className="w-6 h-6 text-red-600" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-semibold text-secondary">Emergência 24h</h4>
+                      <h4 className="font-semibold text-secondary">Telefone</h4>
                       <p className="text-muted-foreground text-sm">
-                        Suporte técnico e assistência
+                        Contacto alternativo
                       </p>
                     </div>
                     <div className="text-red-600 font-semibold">
-                      +244 900 000 000
+                      +244 924 709 966
                     </div>
                   </a>
 
                   {/* E-mail */}
-                  <a 
-                    href="mailto:info@evgruporentcar.ao"
+                  <a
+                    href="mailto:evgrupoprest@gmail.com"
                     className="card-elegante flex items-center space-x-4 hover:bg-blue-50 transition-colors group"
                   >
                     <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center group-hover:bg-blue-200 transition-colors">
@@ -358,7 +361,7 @@ const Contactos = () => {
                       </p>
                     </div>
                     <div className="text-blue-600 font-semibold text-sm">
-                      info@evgruporentcar.ao
+                      evgrupoprest@gmail.com
                     </div>
                   </a>
                 </div>
@@ -384,7 +387,7 @@ const Contactos = () => {
                 Qual é o horário de atendimento?
               </h3>
               <p className="text-muted-foreground">
-                Segunda a Sexta: 8h-18h, Sábado: 8h-14h. Para emergências, 
+                Segunda a Sexta: 8h-18h, Sábado: 8h-14h. Para emergências,
                 temos suporte 24h todos os dias.
               </p>
             </div>
@@ -394,7 +397,7 @@ const Contactos = () => {
                 Fazem entrega e recolha?
               </h3>
               <p className="text-muted-foreground">
-                Sim! Oferecemos entrega e recolha gratuita em Luanda. 
+                Sim! Oferecemos entrega e recolha gratuita em Luanda.
                 Para outras províncias, consulte condições.
               </p>
             </div>
@@ -404,7 +407,7 @@ const Contactos = () => {
                 Que documentos preciso?
               </h3>
               <p className="text-muted-foreground">
-                Bilhete de Identidade, Carta de Condução válida e cartão 
+                Bilhete de Identidade, Carta de Condução válida e cartão
                 de crédito para caução.
               </p>
             </div>
@@ -414,7 +417,7 @@ const Contactos = () => {
                 Como fazer uma reserva?
               </h3>
               <p className="text-muted-foreground">
-                Pode reservar online, por telefone ou WhatsApp. 
+                Pode reservar online, por telefone ou WhatsApp.
                 É rápido e simples!
               </p>
             </div>

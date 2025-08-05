@@ -3,6 +3,8 @@ import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import heroImage from '@/assets/hero-frota-carros.jpg';
+import heroImage1 from '@/assets/hero/1.jpeg';
+import heroImage2 from '@/assets/hero/2.jpeg';
 
 const slidesHero = [
   {
@@ -10,7 +12,7 @@ const slidesHero = [
     titulo: 'Mobilidade com Excelência',
     subtitulo: 'Descubra nossa frota premium com os melhores carros de Angola',
     descricao: 'Desde viaturas económicas até carros de luxo, temos a solução perfeita para sua viagem.',
-    imagem: heroImage,
+    imagem: heroImage1,
     botaoPrincipal: 'Reservar Agora',
     botaoSecundario: 'Ver Frota'
   },
@@ -19,7 +21,7 @@ const slidesHero = [
     titulo: 'A Nº1 em Rent Car em Angola',
     subtitulo: 'Mais de 10 anos oferecendo as melhores soluções de mobilidade',
     descricao: 'Confiança de milhares de clientes e parceiros em todo o país.',
-    imagem: heroImage,
+    imagem: heroImage2,
     botaoPrincipal: 'Conhecer Mais',
     botaoSecundario: 'Contactar'
   },
@@ -28,7 +30,7 @@ const slidesHero = [
     titulo: 'Suporte 24 Horas',
     subtitulo: 'Assistência completa onde quer que esteja',
     descricao: 'Nossa equipe está sempre pronta para atendê-lo em qualquer situação.',
-    imagem: heroImage,
+    imagem: heroImage1,
     botaoPrincipal: 'Emergência',
     botaoSecundario: 'Saber Mais'
   }

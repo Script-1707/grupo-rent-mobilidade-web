@@ -246,7 +246,7 @@ const PaginaInicial = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* WhatsApp */}
             <a 
-              href="https://wa.me/244924000000"
+              href="https://wa.me/244976045538"
               className="card-elegante text-center group hover:bg-green-50"
             >
               <div className="flex items-center justify-center w-16 h-16 bg-green-100 rounded-2xl mb-6 mx-auto group-hover:bg-green-200 transition-colors">

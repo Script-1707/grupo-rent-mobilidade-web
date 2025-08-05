@@ -9,7 +9,7 @@ const itensMenu = [
   { nome: 'Frota de Viaturas', caminho: '/frotas' },
   { nome: 'Serviços', caminho: '/servicos' },
   { nome: 'Reservas', caminho: '/reservas' },
-  { nome: 'Promoções', caminho: '/promocoes' },
+  // { nome: 'Promoções', caminho: '/promocoes' },
   { nome: 'Clientes', caminho: '/clientes' },
   { nome: 'Contactos', caminho: '/contactos' }
 ];
@@ -45,7 +45,7 @@ const CabecalhoNavegacao = () => {
             <div className="flex items-center space-x-6">
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4" />
-                <span>+244 924 000 000</span>
+                <span>+244 976 045 538</span>
               </div>
               <div className="flex items-center space-x-2">
                 <MapPin className="w-4 h-4" />
@@ -57,7 +57,7 @@ const CabecalhoNavegacao = () => {
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <span>Emergência 24h: +244 900 000 000</span>
+              <span>Contacto alternativo: +244 924 709 966</span>
             </div>
           </div>
         </div>
