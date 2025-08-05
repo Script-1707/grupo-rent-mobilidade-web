@@ -197,7 +197,7 @@ const Contactos = () => {
                       value={formulario.telefone}
                       onChange={handleInputChange}
                       className="w-full"
-                      placeholder="+244 900 000 000"
+                      placeholder="+244 976045538"
                     />
                   </div>
                 </div>
@@ -307,7 +307,7 @@ const Contactos = () => {
                 <div className="space-y-4">
                   {/* WhatsApp */}
                   <a 
-                    href="https://wa.me/244924000000"
+                    href="https://wa.me/244976045538"
                     className="card-elegante flex items-center space-x-4 hover:bg-green-50 transition-colors group"
                   >
                     <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center group-hover:bg-green-200 transition-colors">
@@ -326,7 +326,7 @@ const Contactos = () => {
 
                   {/* Emergência */}
                   <a 
-                    href="tel:+244900000000"
+                    href="tel:+244976045538"
                     className="card-elegante flex items-center space-x-4 hover:bg-red-50 transition-colors group"
                   >
                     <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center group-hover:bg-red-200 transition-colors">
@@ -339,13 +339,13 @@ const Contactos = () => {
                       </p>
                     </div>
                     <div className="text-red-600 font-semibold">
-                      +244 900 000 000
+                      +244 976 045 538
                     </div>
                   </a>
 
                   {/* E-mail */}
                   <a 
-                    href="mailto:info@evgruporentcar.ao"
+                    href="mailto:evgrupoprest@gmail.com"
                     className="card-elegante flex items-center space-x-4 hover:bg-blue-50 transition-colors group"
                   >
                     <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center group-hover:bg-blue-200 transition-colors">
@@ -358,7 +358,7 @@ const Contactos = () => {
                       </p>
                     </div>
                     <div className="text-blue-600 font-semibold text-sm">
-                      info@evgruporentcar.ao
+                      evgrupoprest@gmail.com
                     </div>
                   </a>
                 </div>
