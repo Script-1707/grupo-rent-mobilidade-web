@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, MapPin, Clock } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X, Phone, MapPin, Clock } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const itensMenu = [
-  { nome: 'Início', caminho: '/' },
-  { nome: 'Sobre Nós', caminho: '/sobre' },
-  { nome: 'Frota de Viaturas', caminho: '/frotas' },
-  { nome: 'Serviços', caminho: '/servicos' },
-  { nome: 'Reservas', caminho: '/reservas' },
+  { nome: "Início", caminho: "/" },
+  { nome: "Sobre Nós", caminho: "/sobre" },
+  { nome: "Frota de Viaturas", caminho: "/frotas" },
+  { nome: "Serviços", caminho: "/servicos" },
+  { nome: "Reservas", caminho: "/reservas" },
   // { nome: 'Promoções', caminho: '/promocoes' },
-  { nome: 'Clientes', caminho: '/clientes' },
-  { nome: 'Contactos', caminho: '/contactos' }
+  { nome: "Clientes", caminho: "/clientes" },
+  { nome: "Contactos", caminho: "/contactos" },
+  { nome: "Entrar", caminho: "/login" },
+  { nome: "Registrar-se", caminho: "/register" },
 ];
 
 const CabecalhoNavegacao = () => {
@@ -24,8 +26,8 @@ const CabecalhoNavegacao = () => {
       setScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const alternarMenu = () => {
@@ -65,10 +67,11 @@ const CabecalhoNavegacao = () => {
 
       {/* Navegação principal */}
       <header
-        className={`sticky top-0 z-50 transition-all duration-300 ${scrolled
-            ? 'bg-background/95 backdrop-blur-md shadow-card'
-            : 'bg-background'
-          }`}
+        className={`sticky top-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-background/95 backdrop-blur-md shadow-card"
+            : "bg-background"
+        }`}
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
@@ -87,8 +90,9 @@ const CabecalhoNavegacao = () => {
                 <Link
                   key={item.caminho}
                   to={item.caminho}
-                  className={`text-foreground hover:text-primary transition-colors duration-300 font-medium relative group ${localizacao.pathname === item.caminho ? 'text-primary' : ''
-                    }`}
+                  className={`text-foreground hover:text-primary transition-colors duration-300 font-medium relative group ${
+                    localizacao.pathname === item.caminho ? "text-primary" : ""
+                  }`}
                 >
                   {item.nome}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
@@ -99,9 +103,7 @@ const CabecalhoNavegacao = () => {
             {/* Botão de reserva */}
             <div className="hidden lg:flex items-center space-x-4">
               <Link to="/reservas">
-                <Button className="botao-primario">
-                  Reservar Agora
-                </Button>
+                <Button className="botao-primario">Reservar Agora</Button>
               </Link>
             </div>
 
@@ -111,7 +113,11 @@ const CabecalhoNavegacao = () => {
               className="lg:hidden p-2 text-foreground hover:text-primary transition-colors"
               aria-label="Abrir menu"
             >
-              {menuAberto ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {menuAberto ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>
@@ -126,8 +132,11 @@ const CabecalhoNavegacao = () => {
                     key={item.caminho}
                     to={item.caminho}
                     onClick={fecharMenu}
-                    className={`text-foreground hover:text-primary transition-colors duration-300 font-medium py-2 ${localizacao.pathname === item.caminho ? 'text-primary' : ''
-                      }`}
+                    className={`text-foreground hover:text-primary transition-colors duration-300 font-medium py-2 ${
+                      localizacao.pathname === item.caminho
+                        ? "text-primary"
+                        : ""
+                    }`}
                   >
                     {item.nome}
                   </Link>
