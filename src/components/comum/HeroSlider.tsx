@@ -1,39 +1,41 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
-import heroImage from '@/assets/hero-frota-carros.jpg';
-import heroImage1 from '@/assets/hero/1.jpeg';
-import heroImage2 from '@/assets/hero/2.jpeg';
+import React, { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import heroImage from "@/assets/hero-frota-carros.jpg";
+import heroImage1 from "@/assets/hero/1.jpeg";
+import heroImage2 from "@/assets/hero/2.jpeg";
 
 const slidesHero = [
   {
     id: 1,
-    titulo: 'Mobilidade com Excelência',
-    subtitulo: 'Descubra nossa frota premium com os melhores carros de Angola',
-    descricao: 'Desde viaturas económicas até carros de luxo, temos a solução perfeita para sua viagem.',
+    titulo: "Mobilidade com Excelência",
+    subtitulo: "Descubra nossa frota premium com os melhores carros de Angola",
+    descricao:
+      "Desde viaturas económicas até carros de luxo, temos a solução perfeita para sua viagem.",
     imagem: heroImage1,
-    botaoPrincipal: 'Reservar Agora',
-    botaoSecundario: 'Ver Frota'
+    botaoPrincipal: "Reservar Agora",
+    botaoSecundario: "Ver Frota",
   },
   {
     id: 2,
-    titulo: 'A Nº1 em Rent Car em Angola',
-    subtitulo: 'Mais de 10 anos oferecendo as melhores soluções de mobilidade',
-    descricao: 'Confiança de milhares de clientes e parceiros em todo o país.',
+    titulo: "A Nº1 em Rent Car em Angola",
+    subtitulo: "Mais de 10 anos oferecendo as melhores soluções de mobilidade",
+    descricao: "Confiança de milhares de clientes e parceiros em todo o país.",
     imagem: heroImage2,
-    botaoPrincipal: 'Conhecer Mais',
-    botaoSecundario: 'Contactar'
+    botaoPrincipal: "Conhecer Mais",
+    botaoSecundario: "Contactar",
   },
   {
     id: 3,
-    titulo: 'Suporte 24 Horas',
-    subtitulo: 'Assistência completa onde quer que esteja',
-    descricao: 'Nossa equipe está sempre pronta para atendê-lo em qualquer situação.',
+    titulo: "Suporte 24 Horas",
+    subtitulo: "Assistência completa onde quer que esteja",
+    descricao:
+      "Nossa equipe está sempre pronta para atendê-lo em qualquer situação.",
     imagem: heroImage1,
-    botaoPrincipal: 'Emergência',
-    botaoSecundario: 'Saber Mais'
-  }
+    botaoPrincipal: "Emergência",
+    botaoSecundario: "Saber Mais",
+  },
 ];
 
 const HeroSlider = () => {
@@ -63,7 +65,9 @@ const HeroSlider = () => {
     if (!animando) {
       setAnimando(true);
       setTimeout(() => {
-        setSlideAtual((prev) => (prev - 1 + slidesHero.length) % slidesHero.length);
+        setSlideAtual(
+          (prev) => (prev - 1 + slidesHero.length) % slidesHero.length
+        );
         setAnimando(false);
       }, 300);
     }
@@ -85,11 +89,11 @@ const HeroSlider = () => {
     <section className="relative h-screen min-h-[600px] overflow-hidden">
       {/* Fundo do slide com overlay */}
       <div className="absolute inset-0">
-        <img 
-          src={slide.imagem} 
+        <img
+          src={slide.imagem}
           alt={slide.titulo}
           className={`w-full h-full object-cover transition-all duration-1000 ${
-            animando ? 'scale-110' : 'scale-100'
+            animando ? "scale-110" : "scale-100"
           }`}
         />
         <div className="absolute inset-0 bg-black/50"></div>
@@ -100,10 +104,13 @@ const HeroSlider = () => {
       <div className="relative z-10 h-full flex items-center">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl">
-            <div className={`transition-all duration-700 ${
-              animando ? 'opacity-0 translate-y-10' : 'opacity-100 translate-y-0'
-            }`}>
-              
+            <div
+              className={`transition-all duration-700 ${
+                animando
+                  ? "opacity-0 translate-y-10"
+                  : "opacity-100 translate-y-0"
+              }`}
+            >
               {/* Título principal */}
               <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
                 {slide.titulo}
@@ -127,10 +134,10 @@ const HeroSlider = () => {
                     <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
-                
-                <Link to="/frota">
-                  <Button 
-                    variant="outline" 
+
+                <Link to="/frotas">
+                  <Button
+                    variant="outline"
                     className="border-2 border-white text-white hover:bg-white hover:text-secondary text-lg px-10 py-6 bg-transparent"
                   >
                     {slide.botaoSecundario}
@@ -150,9 +157,9 @@ const HeroSlider = () => {
               key={indice}
               onClick={() => irParaSlide(indice)}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                indice === slideAtual 
-                  ? 'bg-primary scale-125' 
-                  : 'bg-white/50 hover:bg-white/75'
+                indice === slideAtual
+                  ? "bg-primary scale-125"
+                  : "bg-white/50 hover:bg-white/75"
               }`}
               aria-label={`Ir para slide ${indice + 1}`}
             />
@@ -185,7 +192,7 @@ const HeroSlider = () => {
 
       {/* Indicador de progresso */}
       <div className="absolute bottom-0 left-0 w-full h-1 bg-white/20">
-        <div 
+        <div
           className="h-full bg-primary transition-all duration-300"
           style={{ width: `${((slideAtual + 1) / slidesHero.length) * 100}%` }}
         ></div>

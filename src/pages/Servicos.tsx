@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+// src/pages/Servicos.tsx
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,6 +10,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import Vantagens from "@/components/comum/Vantagens";
 import ProcessoReserva from "@/components/comum/ProcessoReserva";
+import { useQuery } from "@tanstack/react-query";
 
 const getDestaqueColor = (destaque: string) => {
   switch (destaque) {
@@ -24,32 +25,37 @@ const getDestaqueColor = (destaque: string) => {
   }
 };
 
+const fetchServices = async () => {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/api/services`);
+  if (!res.ok) throw new Error("Erro ao buscar serviços");
+  return res.json();
+};
+
 const Servicos = () => {
-  const [services, setServices] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const {
+    data: services = [],
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: ["services"],
+    queryFn: fetchServices,
+  });
 
-  const fetchServices = async () => {
-    try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/services`);
-      if (!res.ok) throw new Error("Erro ao buscar serviços");
-
-      const data = await res.json();
-      setServices(data);
-    } catch (err) {
-      console.error("Erro ao buscar serviços:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchServices();
-  }, []);
-
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <p>Carregando serviços...</p>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-red-500">
+          {(error as Error).message || "Erro ao carregar serviços."}
+        </p>
       </div>
     );
   }

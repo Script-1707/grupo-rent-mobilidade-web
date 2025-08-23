@@ -267,7 +267,7 @@ const Reservas = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form className="space-y-6">
                 {step === 1 && (
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
@@ -490,7 +490,8 @@ const Reservas = () => {
                           })}
                         </p>
                         <Button
-                          type="submit"
+                          type="button"
+                          onClick={handleSubmit} // 👈 chama diretamente
                           className="mt-4 bg-red-600 hover:bg-red-700 text-white flex items-center gap-2"
                         >
                           <Phone className="w-5 h-5" />

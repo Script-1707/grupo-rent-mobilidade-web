@@ -1,12 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
   Select,
@@ -15,43 +10,81 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Car, Fuel, Users, Settings } from "lucide-react";
+import { Fuel, Users, Settings } from "lucide-react";
+
+// Função para buscar carros
+const fetchCars = async () => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/api/cars`);
+  if (!response.ok) {
+    throw new Error(`Erro na requisição: ${response.status}`);
+  }
+  return response.json();
+};
+
+// Função para buscar categorias
+const fetchCategories = async () => {
+  const response = await fetch(
+    `${import.meta.env.VITE_API_URL}/api/categories`
+  );
+  if (!response.ok) {
+    throw new Error(`Erro na requisição: ${response.status}`);
+  }
+  const data = await response.json();
+  return [
+    { value: "todos", label: "Todas as Categorias" },
+    ...data.map((cat) => ({
+      value: cat.name,
+      label: getCategoriaLabel(cat.name),
+    })),
+  ];
+};
+
+// Função auxiliar para labels
+const getCategoriaLabel = (categoria: string) => {
+  switch (categoria?.toLowerCase()) {
+    case "economico":
+      return "Económico";
+    case "intermedio":
+      return "Intermédio";
+    case "luxo":
+      return "Luxo";
+    case "suv":
+      return "SUV";
+    case "pickup":
+      return "Pick-Up";
+    case "van":
+      return "Van & Grupo";
+    default:
+      return categoria;
+  }
+};
 
 const Frotas = ({ token }) => {
-  const [cars, setCars] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [filtroCategoria, setFiltroCategoria] = useState("todos");
   const [filtroCombustivel, setFiltroCombustivel] = useState("todos");
-  const [categorias, setCategorias] = useState([]);
-  const formatPrice = (price: number) => {
-    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " Kz";
-  };
 
-  const fetchCategories = async () => {
-    try {
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/categories`
-      );
-      if (!response.ok) {
-        throw new Error(`Erro na requisição: ${response.status}`);
-      }
-      const data = await response.json();
-      // Supondo que data seja um array de { id, name }
-      setCategorias([
-        { value: "todos", label: "Todas as Categorias" },
-        ...data.map((cat) => ({
-          value: cat.name,
-          label: getCategoriaLabel(cat.name), // reutilizando sua função de label
-        })),
-      ]);
-    } catch (error) {
-      console.error("Erro ao buscar categorias", error);
-    }
-  };
-  useEffect(() => {
-    fetchCars();
-    fetchCategories();
-  }, []);
+  // Query de carros
+  const {
+    data: cars = [],
+    isLoading: loadingCars,
+    isError: errorCars,
+  } = useQuery({
+    queryKey: ["cars"],
+    queryFn: fetchCars,
+    staleTime: 1000 * 60 * 5, // 5 minutos sem refetch
+    cacheTime: 1000 * 60 * 30, // 30 minutos no cache
+  });
+
+  // Query de categorias
+  const {
+    data: categorias = [],
+    isLoading: loadingCategorias,
+    isError: errorCategorias,
+  } = useQuery({
+    queryKey: ["categories"],
+    queryFn: fetchCategories,
+    staleTime: 1000 * 60 * 10, // 10 minutos
+  });
 
   const combustiveis = [
     { value: "todos", label: "Todos os Combustíveis" },
@@ -60,73 +93,24 @@ const Frotas = ({ token }) => {
     { value: "hibrido", label: "Híbrido" },
   ];
 
-  // Função para buscar carros do backend
-  const fetchCars = async () => {
-    try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/cars`);
-      if (!response.ok) {
-        throw new Error(`Erro na requisição: ${response.status}`);
-      }
-      const data = await response.json();
-      setCars(data);
-    } catch (error) {
-      console.error("Erro ao buscar veículos", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchCars();
-  }, []);
+  const formatPrice = (price: number) =>
+    price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " Kz";
 
   const carsFiltrados = cars.filter((car) => {
     const categoriaMatch =
-      filtroCategoria === "todos" || car.category.name === filtroCategoria;
+      filtroCategoria === "todos" || car.category?.name === filtroCategoria;
     const combustivelMatch =
       filtroCombustivel === "todos" || car.fuel === filtroCombustivel;
     return categoriaMatch && combustivelMatch;
   });
 
-  const getCategoriaLabel = (categoria: string) => {
-    switch (categoria) {
-      case "economico":
-        return "Económico";
-      case "intermedio":
-        return "Intermédio";
-      case "luxo":
-        return "Luxo";
-      case "suv":
-        return "SUV";
-      case "pickup":
-        return "Pick-Up";
-      case "van":
-        return "Van & Grupo";
-      default:
-        return categoria;
-    }
-  };
+  if (loadingCars || loadingCategorias) {
+    return <p className="text-center py-16">Carregando...</p>;
+  }
 
-  const getCategoriaColor = (categoria: string) => {
-    switch (categoria) {
-      case "economico":
-        return "bg-green-100 text-green-800";
-      case "intermedio":
-        return "bg-blue-100 text-blue-800";
-      case "luxo":
-        return "bg-purple-100 text-purple-800";
-      case "suv":
-        return "bg-orange-100 text-orange-800";
-      case "pickup":
-        return "bg-gray-100 text-gray-800";
-      case "van":
-        return "bg-indigo-100 text-indigo-800";
-      default:
-        return "bg-gray-100 text-gray-800";
-    }
-  };
-
-  if (loading) return <p className="text-center py-16">Carregando...</p>;
+  if (errorCars || errorCategorias) {
+    return <p className="text-center py-16">Erro ao carregar dados.</p>;
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -135,7 +119,7 @@ const Frotas = ({ token }) => {
         <div className="container mx-auto px-4 flex flex-wrap gap-4 justify-center">
           <Select value={filtroCategoria} onValueChange={setFiltroCategoria}>
             <SelectTrigger className="w-48">
-              <SelectValue />
+              <SelectValue placeholder="Categorias" />
             </SelectTrigger>
             <SelectContent>
               {categorias.map((categoria) => (
@@ -151,7 +135,7 @@ const Frotas = ({ token }) => {
             onValueChange={setFiltroCombustivel}
           >
             <SelectTrigger className="w-48">
-              <SelectValue />
+              <SelectValue placeholder="Combustível" />
             </SelectTrigger>
             <SelectContent>
               {combustiveis.map((combustivel) => (
@@ -172,7 +156,6 @@ const Frotas = ({ token }) => {
               key={car.id}
               className="overflow-hidden hover:scale-105 shadow-elegant w-full"
             >
-              {/* Imagem e status */}
               <div className="relative">
                 <img
                   src={car.image || "https://via.placeholder.com/800x400"}
@@ -181,14 +164,20 @@ const Frotas = ({ token }) => {
                 />
                 <Badge
                   className={`absolute top-4 left-4 ${
-                    car.status === "Disponível" ? "bg-green-500" : "bg-red-500"
+                    {
+                      ECONÓMICO: "bg-green-500",
+                      SUV: "bg-yellow-500",
+                      PICKUP: "bg-gray-500",
+                      VAN: "bg-blue-500",
+                      INTERMEDIÁRIO: "bg-blue-700",
+                      LUXO: "bg-purple-600",
+                    }[car.category?.name] || "bg-gray-400"
                   }`}
                 >
-                  {car.status || "—"}
+                  {car.category?.name || "—"}
                 </Badge>
               </div>
 
-              {/* Cabeçalho */}
               <CardHeader>
                 <CardTitle className="text-xl">{car.name || "—"}</CardTitle>
                 <div className="flex items-center gap-4 text-sm text-muted-foreground">
@@ -207,7 +196,6 @@ const Frotas = ({ token }) => {
                 </div>
               </CardHeader>
 
-              {/* Conteúdo */}
               <CardContent className="space-y-4">
                 {car.specifications?.length > 0 && (
                   <div>
@@ -256,49 +244,6 @@ const Frotas = ({ token }) => {
               </CardContent>
             </Card>
           ))}
-        </div>
-      </section>
-      {/* Perguntas Frequentes */}
-      {/* Perguntas Frequentes */}
-      <section className="py-16 bg-muted/10">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <h2 className="text-2xl font-bold mb-8 text-center">
-            Perguntas Frequentes
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="p-6 bg-background rounded-2xl shadow-elegant">
-              <h3 className="font-semibold mb-2">Que documentos preciso?</h3>
-              <p className="text-muted-foreground">
-                Bilhete de Identidade válido e Carta de Condução. Para aluguer
-                com motorista, apenas o BI é necessário.
-              </p>
-            </div>
-            <div className="p-6 bg-background rounded-2xl shadow-elegant">
-              <h3 className="font-semibold mb-2">
-                Há limite de quilometragem?
-              </h3>
-              <p className="text-muted-foreground">
-                Quilometragem ilimitada em Luanda. Para viagens para outras
-                províncias, consulte condições especiais.
-              </p>
-            </div>
-            <div className="p-6 bg-background rounded-2xl shadow-elegant">
-              <h3 className="font-semibold mb-2">Como é o seguro?</h3>
-              <p className="text-muted-foreground">
-                Todas as viaturas têm seguro obrigatório incluído. Seguro contra
-                todos os riscos disponível como extra.
-              </p>
-            </div>
-            <div className="p-6 bg-background rounded-2xl shadow-elegant">
-              <h3 className="font-semibold mb-2">
-                Posso devolver noutro local?
-              </h3>
-              <p className="text-muted-foreground">
-                Sim, oferecemos devolução em local diferente. Taxa adicional
-                pode ser aplicada dependendo da distância.
-              </p>
-            </div>
-          </div>
         </div>
       </section>
     </div>

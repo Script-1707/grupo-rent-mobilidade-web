@@ -2,13 +2,13 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
-import Sidebar from "@/components/admin/Sidebar";
 import DashboardHeader from "@/components/admin/DashboardHeader";
 
 const ContactInquiryPage = () => {
   const navigate = useNavigate();
   const [inquiries, setInquiries] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedMessage, setSelectedMessage] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -68,7 +68,7 @@ const ContactInquiryPage = () => {
                   <th className="p-2 border">Email</th>
                   <th className="p-2 border">Telefone</th>
                   <th className="p-2 border">Assunto</th>
-                  <th className="p-2 border">Mensagem</th>
+                  <th className="p-2 border">Ação</th>
                 </tr>
               </thead>
               <tbody>
@@ -80,7 +80,14 @@ const ContactInquiryPage = () => {
                       <td className="p-2 border">{inquiry.email || "—"}</td>
                       <td className="p-2 border">{inquiry.phone || "—"}</td>
                       <td className="p-2 border">{inquiry.subject || "—"}</td>
-                      <td className="p-2 border">{inquiry.message || "—"}</td>
+                      <td className="p-2 border text-center">
+                        <button
+                          onClick={() => setSelectedMessage(inquiry)}
+                          className="px-3 py-1 text-sm rounded bg-blue-500 text-white hover:bg-blue-600"
+                        >
+                          Ver mensagem
+                        </button>
+                      </td>
                     </tr>
                   ))
                 ) : (
@@ -92,6 +99,28 @@ const ContactInquiryPage = () => {
                 )}
               </tbody>
             </table>
+          </div>
+        )}
+
+        {/* Modal */}
+        {selectedMessage && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white rounded-lg shadow-lg max-w-lg w-full p-6 relative">
+              <h2 className="text-xl font-bold mb-4">
+                Mensagem de {selectedMessage.name}
+              </h2>
+              <p className="text-gray-700 whitespace-pre-line">
+                {selectedMessage.message}
+              </p>
+              <div className="flex justify-end mt-6">
+                <button
+                  onClick={() => setSelectedMessage(null)}
+                  className="px-4 py-2 rounded bg-gray-300 hover:bg-gray-400"
+                >
+                  Fechar
+                </button>
+              </div>
+            </div>
           </div>
         )}
       </main>

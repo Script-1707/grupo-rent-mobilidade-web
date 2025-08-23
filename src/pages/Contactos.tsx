@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   MapPin,
   Phone,
@@ -6,72 +6,62 @@ import {
   Clock,
   MessageCircle,
   Send,
-  CheckCircle
-} from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { useToast } from '@/hooks/use-toast';
+  CheckCircle,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
 
 const informacoesContacto = [
   {
     icone: MapPin,
-    titulo: 'Localização',
-    conteudo: [
-      'Luanda, Corimba ',
-      'Frente a ENAPP',
-    ],
-    acao: 'Ver no Mapa',
-    link: 'https://maps.app.goo.gl/kthf7RrDTnuc2Vhi9'
+    titulo: "Localização",
+    conteudo: ["Luanda, Corimba ", "Frente a ENAPP"],
+    acao: "Ver no Mapa",
+    link: "https://maps.app.goo.gl/kthf7RrDTnuc2Vhi9",
   },
   {
     icone: Phone,
-    titulo: 'Telefones',
-    conteudo: [
-      '+244 976 045 538(Principal)',
-      '+244 924 709 966 (Alternativo)',
-    ],
-    acao: 'Ligar Agora',
-    link: 'tel:+244976045538'
+    titulo: "Telefones",
+    conteudo: ["+244 976 045 538(Principal)", "+244 924 709 966 (Alternativo)"],
+    acao: "Ligar Agora",
+    link: "tel:+244976045538",
   },
   {
     icone: Mail,
-    titulo: 'E-mails',
-    conteudo: [
-      'evgrupoprest@gmail.com',
-      '______________________',
-    ],
-    acao: 'Enviar E-mail',
-    link: 'mailto:evgrupoprest@gmail.com'
+    titulo: "E-mails",
+    conteudo: ["evgrupoprest@gmail.com", "______________________"],
+    acao: "Enviar E-mail",
+    link: "mailto:evgrupoprest@gmail.com",
   },
   {
     icone: Clock,
-    titulo: 'Horário de Atendimento',
-    conteudo: [
-      'Segunda - Sexta: 8h - 18h',
-      'Sábado: 8h - 14h',
-    ],
-    acao: 'Reservar Agora',
-    link: '/reservas'
-  }
+    titulo: "Horário de Atendimento",
+    conteudo: ["Segunda - Sexta: 8h - 18h", "Sábado: 8h - 14h"],
+    acao: "Reservar Agora",
+    link: "/reservas",
+  },
 ];
 
 const Contactos = () => {
   const [formulario, setFormulario] = useState({
-    nome: '',
-    email: '',
-    telefone: '',
-    assunto: '',
-    mensagem: ''
+    nome: "",
+    email: "",
+    telefone: "",
+    assunto: "",
+    mensagem: "",
   });
   const [enviando, setEnviando] = useState(false);
   const { toast } = useToast();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormulario(prev => ({
+    setFormulario((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -79,21 +69,53 @@ const Contactos = () => {
     e.preventDefault();
     setEnviando(true);
 
-    // Simular envio do formulário
-    setTimeout(() => {
-      setEnviando(false);
+    try {
+      const response = await fetch(
+        "http://localhost:8082/api/contact-inquiries",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formulario.nome,
+            email: formulario.email,
+            phone: formulario.telefone,
+            subject: formulario.assunto,
+            message: formulario.mensagem,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Erro ao enviar a mensagem.");
+      }
+
+      const data = await response.json();
+
       toast({
         title: "Mensagem enviada com sucesso!",
-        description: "Entraremos em contacto consigo brevemente.",
+        description: `Obrigado ${data.name}, entraremos em contacto consigo brevemente.`,
       });
+
+      // Resetar formulário
       setFormulario({
-        nome: '',
-        email: '',
-        telefone: '',
-        assunto: '',
-        mensagem: ''
+        nome: "",
+        email: "",
+        telefone: "",
+        assunto: "",
+        mensagem: "",
       });
-    }, 2000);
+    } catch (error) {
+      console.error(error);
+      toast({
+        title: "Erro ao enviar mensagem",
+        description: "Por favor, tente novamente mais tarde.",
+        variant: "destructive",
+      });
+    } finally {
+      setEnviando(false);
+    }
   };
 
   return (
@@ -106,8 +128,8 @@ const Contactos = () => {
               Contacte-nos
             </h1>
             <p className="text-xl md:text-2xl leading-relaxed">
-              Estamos aqui para ajudá-lo. Entre em contacto connosco através de qualquer
-              um dos nossos canais de atendimento.
+              Estamos aqui para ajudá-lo. Entre em contacto connosco através de
+              qualquer um dos nossos canais de atendimento.
             </p>
           </div>
         </div>
@@ -137,7 +159,7 @@ const Contactos = () => {
 
                 {info.acao && (
                   <a
-                    href={info.link || '#'}
+                    href={info.link || "#"}
                     className="inline-flex items-center text-primary hover:text-primary-hover font-semibold transition-colors"
                   >
                     {info.acao}
@@ -154,18 +176,21 @@ const Contactos = () => {
       <section className="py-20 bg-muted">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-
             {/* Formulário de Contacto */}
             <div>
               <h2 className="titulo-secao">Envie-nos uma Mensagem</h2>
               <p className="subtitulo mb-8">
-                Preencha o formulário abaixo e entraremos em contacto consigo o mais breve possível.
+                Preencha o formulário abaixo e entraremos em contacto consigo o
+                mais breve possível.
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="nome" className="block text-sm font-medium text-secondary mb-2">
+                    <label
+                      htmlFor="nome"
+                      className="block text-sm font-medium text-secondary mb-2"
+                    >
                       Nome Completo *
                     </label>
                     <Input
@@ -181,7 +206,10 @@ const Contactos = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="telefone" className="block text-sm font-medium text-secondary mb-2">
+                    <label
+                      htmlFor="telefone"
+                      className="block text-sm font-medium text-secondary mb-2"
+                    >
                       Telefone *
                     </label>
                     <Input
@@ -198,7 +226,10 @@ const Contactos = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-secondary mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-secondary mb-2"
+                  >
                     E-mail *
                   </label>
                   <Input
@@ -214,7 +245,10 @@ const Contactos = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="assunto" className="block text-sm font-medium text-secondary mb-2">
+                  <label
+                    htmlFor="assunto"
+                    className="block text-sm font-medium text-secondary mb-2"
+                  >
                     Assunto *
                   </label>
                   <Input
@@ -230,7 +264,10 @@ const Contactos = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="mensagem" className="block text-sm font-medium text-secondary mb-2">
+                  <label
+                    htmlFor="mensagem"
+                    className="block text-sm font-medium text-secondary mb-2"
+                  >
                     Mensagem *
                   </label>
                   <Textarea
@@ -270,7 +307,6 @@ const Contactos = () => {
 
             {/* Mapa e Contactos Rápidos */}
             <div className="space-y-8">
-
               {/* Mapa */}
               <div>
                 <h3 className="text-2xl font-bold text-secondary mb-4">
@@ -285,10 +321,7 @@ const Contactos = () => {
                     <p className="text-muted-foreground">
                       Luanda, Corimba - Frente a ENAPP
                     </p>
-                    <Button
-                      className="botao-outline mt-4"
-                      asChild
-                    >
+                    <Button className="botao-outline mt-4" asChild>
                       <a
                         href="https://maps.app.goo.gl/kthf7RrDTnuc2Vhi9"
                         target="_blank"
@@ -355,7 +388,9 @@ const Contactos = () => {
                       <Mail className="w-6 h-6 text-blue-600" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-semibold text-secondary">E-mail Geral</h4>
+                      <h4 className="font-semibold text-secondary">
+                        E-mail Geral
+                      </h4>
                       <p className="text-muted-foreground text-sm">
                         Informações e esclarecimentos
                       </p>
@@ -387,8 +422,8 @@ const Contactos = () => {
                 Qual é o horário de atendimento?
               </h3>
               <p className="text-muted-foreground">
-                Segunda a Sexta: 8h-18h, Sábado: 8h-14h. Para emergências,
-                temos suporte 24h todos os dias.
+                Segunda a Sexta: 8h-18h, Sábado: 8h-14h. Para emergências, temos
+                suporte 24h todos os dias.
               </p>
             </div>
 
@@ -397,8 +432,8 @@ const Contactos = () => {
                 Fazem entrega e recolha?
               </h3>
               <p className="text-muted-foreground">
-                Sim! Oferecemos entrega e recolha gratuita em Luanda.
-                Para outras províncias, consulte condições.
+                Sim! Oferecemos entrega e recolha gratuita em Luanda. Para
+                outras províncias, consulte condições.
               </p>
             </div>
 
@@ -407,8 +442,8 @@ const Contactos = () => {
                 Que documentos preciso?
               </h3>
               <p className="text-muted-foreground">
-                Bilhete de Identidade, Carta de Condução válida e cartão
-                de crédito para caução.
+                Bilhete de Identidade, Carta de Condução válida e cartão de
+                crédito para caução.
               </p>
             </div>
 
@@ -417,8 +452,8 @@ const Contactos = () => {
                 Como fazer uma reserva?
               </h3>
               <p className="text-muted-foreground">
-                Pode reservar online, por telefone ou WhatsApp.
-                É rápido e simples!
+                Pode reservar online, por telefone ou WhatsApp. É rápido e
+                simples!
               </p>
             </div>
           </div>

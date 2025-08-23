@@ -1,14 +1,28 @@
-// src/pages/admin/CarsPage.jsx
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { jwtDecode } from "jwt-decode";
 import DashboardHeader from "@/components/admin/DashboardHeader";
-import { Card } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Users, Fuel, Settings, PlusCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+const initialCarState = {
+  name: "",
+  description: "",
+  specifications: [],
+  priceDaily: "",
+  priceWeekly: "",
+  priceMonthly: "",
+  transmission: "",
+  fuelType: "",
+  seats: "",
+  imageFile: null,
+  status: "",
+  categoryId: "",
+};
+
 const CarsPage = () => {
   const navigate = useNavigate();
   const [cars, setCars] = useState([]);
@@ -17,40 +31,33 @@ const CarsPage = () => {
   const [showForm, setShowForm] = useState(false);
   const [step, setStep] = useState(1);
   const [selectedCar, setSelectedCar] = useState(null);
-  const [newCar, setNewCar] = useState({
-    name: "",
-    description: "",
-    specifications: [],
-    priceDaily: "",
-    priceWeekly: "",
-    priceMonthly: "",
-    transmission: "",
-    fuelType: "",
-    seats: "",
-    imageFile: null, // ← arquivo enviado
-    status: "",
-    categoryId: "",
-  });
 
-  const handleCardClick = (car) => {
-    setSelectedCar(car);
-  };
+  // paginação
+  const [currentPage, setCurrentPage] = useState(1);
+  const carsPerPage = 4;
+  const indexOfLastCar = currentPage * carsPerPage;
+  const indexOfFirstCar = indexOfLastCar - carsPerPage;
+  const currentCars = cars.slice(indexOfFirstCar, indexOfLastCar);
+  const totalPages = Math.ceil(cars.length / carsPerPage);
+
+  const [newCar, setNewCar] = useState(initialCarState);
+
+  const handleCardClick = (car) => setSelectedCar(car);
+
   useEffect(() => {
     const fetchCategories = async () => {
       const token = localStorage.getItem("token");
-      if (!token) return; // optional: handle missing token
+      if (!token) return;
       try {
         const res = await fetch(
           `${import.meta.env.VITE_API_URL}/api/categories`,
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
+          { headers: { Authorization: `Bearer ${token}` } }
         );
         if (!res.ok) throw new Error("Erro ao buscar categorias");
         const data = await res.json();
         setCategories(data);
       } catch (err) {
-        console.error(err);
+        console.error("Erro ao carregar categorias:", err);
       }
     };
     fetchCategories();
@@ -58,10 +65,8 @@ const CarsPage = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-      return;
-    }
+    if (!token) return navigate("/login");
+
     try {
       const decoded = jwtDecode(token);
       if (decoded.role !== "ROLE_ADMIN" && !decoded.isAdmin) {
@@ -69,7 +74,7 @@ const CarsPage = () => {
         return;
       }
       fetchCars(token);
-    } catch (err) {
+    } catch {
       navigate("/login");
     }
   }, [navigate]);
@@ -81,11 +86,10 @@ const CarsPage = () => {
       });
       if (!res.ok) throw new Error("Erro ao buscar veículos");
       const data = await res.json();
-      console.log(data[0].specifications[0].name);
-      console.log("Carros recebidos:", data);
-      setCars(data);
+      setCars(data || []);
     } catch (err) {
-      console.error(err);
+      console.error("Erro ao carregar carros:", err);
+      toast.error("Erro ao carregar veículos!");
     } finally {
       setLoading(false);
     }
@@ -94,6 +98,7 @@ const CarsPage = () => {
   const handleAddCar = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
+    if (!token) return navigate("/login");
 
     try {
       const formData = new FormData();
@@ -122,14 +127,10 @@ const CarsPage = () => {
       if (newCar.imageFile) {
         formData.append("image", newCar.imageFile);
       }
-      console.log("Enviando dados do carro:", carData);
-      console.log("FormData:", formData);
-      console.log(newCar.imageFile);
+
       const res = await fetch(`${import.meta.env.VITE_API_URL}/api/cars`, {
         method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` },
         body: formData,
       });
 
@@ -141,23 +142,10 @@ const CarsPage = () => {
       const createdCar = await res.json();
       setCars((prev) => [...prev, createdCar]);
 
-      // Reset do formulário
+      // reset form
       setShowForm(false);
       setStep(1);
-      setNewCar({
-        name: "",
-        description: "",
-        specifications: [],
-        priceDaily: "",
-        priceWeekly: "",
-        priceMonthly: "",
-        transmission: "",
-        fuelType: "",
-        seats: "",
-        imageFile: null,
-        status: "",
-        categoryId: "",
-      });
+      setNewCar(initialCarState);
 
       toast.success("Veículo adicionado com sucesso!");
     } catch (err) {
@@ -193,110 +181,155 @@ const CarsPage = () => {
           <div className="bg-white rounded-lg shadow p-4 overflow-x-auto">
             {/* Lista de Carros */}
             <section className="py-16">
-              <div className="container mx-auto px-4 space-y-8">
+              <div className="container mx-auto px-4">
                 {cars.length > 0 ? (
-                  cars.map((car) => (
-                    <Card
-                      key={car.id}
-                      className="overflow-hidden hover:scale-105 shadow-elegant w-full"
-                      onClick={() => handleCardClick(car)}
-                    >
-                      {/* Imagem e status */}
-                      <div className="relative">
-                        <img
-                          src={
-                            car.image || "https://via.placeholder.com/800x400"
-                          }
-                          alt={car.name}
-                          className="w-full h-60 object-cover"
-                        />
-                        <Badge
-                          className={`absolute top-4 left-4 ${
-                            car.status === "Disponível"
-                              ? "bg-green-500"
-                              : "bg-red-500"
-                          }`}
+                  <>
+                    {/* Grid de carros */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {currentCars.map((car) => (
+                        <Card
+                          key={car.id}
+                          className="overflow-hidden hover:scale-105 shadow-elegant w-full"
+                          onClick={() => handleCardClick(car)}
                         >
-                          {car.status || "—"}
-                        </Badge>
-                      </div>
+                          {/* Imagem e Categoria */}
+                          <div className="relative">
+                            <img
+                              src={
+                                car.image ||
+                                "https://via.placeholder.com/800x400"
+                              }
+                              alt={car.name}
+                              className="w-full h-48 object-cover"
+                            />
+                            <Badge
+                              className={`absolute top-4 left-4 ${
+                                {
+                                  ECONÓMICO: "bg-green-500",
+                                  SUV: "bg-yellow-500",
+                                  PICKUP: "bg-gray-500",
+                                  VAN: "bg-blue-500",
+                                  INTERMEDIÁRIO: "bg-blue-700",
+                                  LUXO: "bg-purple-600",
+                                }[car.category?.name] || "bg-gray-400"
+                              }`}
+                            >
+                              {car.category?.name || "—"}
+                            </Badge>
+                          </div>
 
-                      {/* Cabeçalho */}
-                      <CardHeader>
-                        <CardTitle className="text-xl">
-                          {car.name || "—"}
-                        </CardTitle>
-                        <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                          <div className="flex items-center gap-1">
-                            <Users className="w-4 h-4" />
-                            {car.seats || "—"} lugares
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <Fuel className="w-4 h-4" />
-                            {car.fuelType || "—"}
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <Settings className="w-4 h-4" />
-                            {car.transmission || "—"}
-                          </div>
-                        </div>
-                      </CardHeader>
+                          {/* Cabeçalho */}
+                          <CardHeader>
+                            <CardTitle className="text-lg">
+                              {car.name || "—"}
+                            </CardTitle>
+                            <div className="flex flex-col gap-2 text-xs text-muted-foreground">
+                              <div className="flex items-center gap-1">
+                                <Users className="w-4 h-4" />
+                                {car.seats || "—"} lugares
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <Fuel className="w-4 h-4" />
+                                {car.fuelType || "—"}
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <Settings className="w-4 h-4" />
+                                {car.transmission || "—"}
+                              </div>
+                            </div>
+                          </CardHeader>
 
-                      {/* Conteúdo */}
-                      <CardContent className="space-y-4">
-                        {car.specifications?.length > 0 && (
-                          <div>
-                            <h4 className="font-semibold mb-2">
-                              Características:
-                            </h4>
-                            <div className="flex flex-wrap gap-2">
-                              {car.specifications.map((spec) => (
-                                <Badge
-                                  key={spec.id}
-                                  variant="secondary"
-                                  className="text-xs"
-                                >
-                                  {spec.name}
-                                </Badge>
-                              ))}
-                            </div>
-                          </div>
-                        )}
+                          {/* Conteúdo */}
+                          <CardContent className="space-y-1">
+                            {car.specifications?.length > 0 && (
+                              <div>
+                                <h4 className="font-semibold mb-1">
+                                  Características:
+                                </h4>
+                                <div className="flex flex-wrap gap-2">
+                                  {car.specifications.map((spec) => (
+                                    <Badge
+                                      key={spec.id}
+                                      variant="secondary"
+                                      className="text-xs"
+                                    >
+                                      {spec.name}
+                                    </Badge>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
 
-                        <div className="space-y-2">
-                          <h4 className="font-semibold">Preços:</h4>
-                          <div className="text-sm space-y-1">
-                            <div className="flex justify-between">
-                              <span>Diário:</span>
-                              <span className="font-medium">
-                                {car.priceDaily ? `${car.priceDaily} Kz` : "—"}
-                              </span>
+                            <div className="space-y-1">
+                              <h4 className="font-semibold">Preços:</h4>
+                              <div className="text-xs space-y-1">
+                                <div className="flex justify-between">
+                                  <span>Diário:</span>
+                                  <span className="font-medium">
+                                    {car.priceDaily
+                                      ? `${car.priceDaily} Kz`
+                                      : "—"}
+                                  </span>
+                                </div>
+                                <div className="flex justify-between">
+                                  <span>Semanal:</span>
+                                  <span className="font-medium">
+                                    {car.priceWeekly
+                                      ? `${car.priceWeekly} Kz`
+                                      : "—"}
+                                  </span>
+                                </div>
+                                <div className="flex justify-between">
+                                  <span>Mensal:</span>
+                                  <span className="font-medium">
+                                    {car.priceMonthly
+                                      ? `${car.priceMonthly} Kz`
+                                      : "—"}
+                                  </span>
+                                </div>
+                              </div>
                             </div>
-                            <div className="flex justify-between">
-                              <span>Semanal:</span>
-                              <span className="font-medium">
-                                {car.priceWeekly
-                                  ? `${car.priceWeekly} Kz`
-                                  : "—"}
-                              </span>
-                            </div>
-                            <div className="flex justify-between">
-                              <span>Mensal:</span>
-                              <span className="font-medium">
-                                {car.priceMonthly
-                                  ? `${car.priceMonthly} Kz`
-                                  : "—"}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
 
-                        <Button className="w-full bg-gradient-primary hover:bg-gradient-primary/90">
-                          Reservar Agora
+                            <Button className="w-full bg-gradient-primary hover:bg-gradient-primary/90 text-sm">
+                              Reservar Agora
+                            </Button>
+                          </CardContent>
+                        </Card>
+                      ))}
+                    </div>
+
+                    {/* Paginação */}
+                    <div className="flex justify-center mt-8 gap-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        disabled={currentPage === 1}
+                        onClick={() => setCurrentPage((prev) => prev - 1)}
+                      >
+                        Anterior
+                      </Button>
+                      {[...Array(totalPages)].map((_, index) => (
+                        <Button
+                          key={index}
+                          size="sm"
+                          variant={
+                            currentPage === index + 1 ? "default" : "outline"
+                          }
+                          onClick={() => setCurrentPage(index + 1)}
+                        >
+                          {index + 1}
                         </Button>
-                      </CardContent>
-                    </Card>
-                  ))
+                      ))}
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        disabled={currentPage === totalPages}
+                        onClick={() => setCurrentPage((prev) => prev + 1)}
+                      >
+                        Próxima
+                      </Button>
+                    </div>
+                  </>
                 ) : (
                   <p className="text-center text-gray-500">
                     Nenhum veículo encontrado

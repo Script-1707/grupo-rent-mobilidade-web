@@ -1,13 +1,14 @@
 // src/pages/admin/AdminSettings.jsx
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 
-import Sidebar from "@/components/admin/Sidebar";
 import DashboardHeader from "@/components/admin/DashboardHeader";
 
 const AdminSettings = () => {
   const navigate = useNavigate();
+  const [admin, setAdmin] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -20,16 +21,57 @@ const AdminSettings = () => {
       const decoded = jwtDecode(token);
       if (decoded.role !== "ROLE_ADMIN" && !decoded.isAdmin) {
         navigate("/");
+        return;
       }
+
+      // buscar todos os users e filtrar o admin logado
+      fetchUsers(token, decoded);
     } catch (err) {
       navigate("/login");
     }
   }, [navigate]);
 
+  const fetchUsers = async (token, decoded) => {
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/users`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (!res.ok) throw new Error("Erro ao buscar usuários");
+
+      const users = await res.json();
+      console.log(users);
+      const currentAdmin = users.find(
+        (u) => u.email === decoded.sub || u.username === decoded.sub
+      );
+
+      setAdmin(currentAdmin || null);
+    } catch (err) {
+      console.error("Erro ao buscar admin:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleSave = (e) => {
     e.preventDefault();
     alert("Configurações salvas com sucesso!");
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p>Carregando dados...</p>
+      </div>
+    );
+  }
+
+  if (!admin) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p>Administrador não encontrado</p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex">
@@ -53,7 +95,7 @@ const AdminSettings = () => {
                 <label className="block text-sm font-medium">Nome</label>
                 <input
                   type="text"
-                  defaultValue="Administrador"
+                  defaultValue={admin.username}
                   className="mt-1 p-2 w-full border rounded"
                 />
               </div>
@@ -61,7 +103,7 @@ const AdminSettings = () => {
                 <label className="block text-sm font-medium">Email</label>
                 <input
                   type="email"
-                  defaultValue="admin@email.com"
+                  defaultValue={admin.email}
                   className="mt-1 p-2 w-full border rounded"
                 />
               </div>

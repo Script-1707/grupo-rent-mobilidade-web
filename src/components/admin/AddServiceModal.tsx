@@ -5,7 +5,7 @@ const AddServiceModal = ({ isOpen, onClose, onSave }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [preco, setPreco] = useState("");
-  const [destaque, setDestaque] = useState(false);
+  const [destaque, setDestaque] = useState("");
   const [caracteristicas, setCaracteristicas] = useState([""]);
   const [loading, setLoading] = useState(false);
 
@@ -91,13 +91,21 @@ const AddServiceModal = ({ isOpen, onClose, onSave }) => {
             required
           />
           <label className="flex items-center space-x-2">
-            <input
-              type="checkbox"
-              checked={destaque}
-              onChange={(e) => setDestaque(e.target.checked)}
-            />
-            <span>Destaque</span>
+            <span className="font-semibold">Destaque</span>
           </label>
+
+          <select
+            name="destaque"
+            id="destaque"
+            value={destaque}
+            onChange={(e) => setDestaque(e.target.value)}
+            className="w-full border p-2 rounded"
+          >
+            <option value="">-- Selecione --</option>
+            <option value="Mais Popular">Mais Popular</option>
+            <option value="Premium">Premium</option>
+            <option value="Empresarial">Empresarial</option>
+          </select>
 
           <div>
             <label className="font-semibold">Características</label>
