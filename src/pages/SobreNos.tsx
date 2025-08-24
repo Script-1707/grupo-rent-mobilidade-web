@@ -255,56 +255,6 @@ const SobreNos = () => {
         </div>
       </section>
 
-
-      {/* Responsabilidade Social */}
-      <section className="py-20 gradiente-hero text-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Responsabilidade Social
-            </h2>
-            <p className="text-xl leading-relaxed max-w-3xl mx-auto">
-              Acreditamos que o sucesso empresarial deve andar de mãos dadas
-              com o desenvolvimento da comunidade e a preservação do meio ambiente.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Users className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">Projectos Comunitários</h3>
-              <p className="text-white/90 leading-relaxed">
-                Apoiamos iniciativas educativas e de desenvolvimento em
-                comunidades carenciadas de Luanda.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Award className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">Patrocínios Desportivos</h3>
-              <p className="text-white/90 leading-relaxed">
-                Patrocinamos equipas e eventos desportivos locais,
-                promovendo o desporto nacional.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Leaf className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">Sustentabilidade</h3>
-              <p className="text-white/90 leading-relaxed">
-                Investimos em veículos mais eficientes e práticas
-                ambientalmente responsáveis.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };

@@ -124,7 +124,7 @@ const RodapePrincipal = () => {
 
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-primary" />
-                <p className="text-secondary-foreground/80">evgrupoprest@gmail.com</p>
+                <p className="text-secondary-foreground/80">geral@evgrupo.com</p>
               </div>
 
               <div className="flex items-start space-x-3">

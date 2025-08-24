@@ -34,9 +34,9 @@ const informacoesContacto = [
   {
     icone: Mail,
     titulo: "E-mails",
-    conteudo: ["evgrupoprest@gmail.com", "______________________"],
+    conteudo: ["geral@evgrupo.com", "______________________"],
     acao: "Enviar E-mail",
-    link: "mailto:evgrupoprest@gmail.com",
+    link: "mailto:geral@evgrupo.com",
   },
   {
     icone: Clock,
@@ -180,137 +180,8 @@ const Contactos = () => {
       <section className="py-20 bg-muted">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Formulário de Contacto */}
-            <div data-aos="fade-right">
-              <h2 className="titulo-secao">Envie-nos uma Mensagem</h2>
-              <p className="subtitulo mb-8">
-                Preencha o formulário abaixo e entraremos em contacto consigo o
-                mais breve possível.
-              </p>
+           
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label
-                      htmlFor="nome"
-                      className="block text-sm font-medium text-secondary mb-2"
-                    >
-                      Nome Completo *
-                    </label>
-                    <Input
-                      id="nome"
-                      name="nome"
-                      type="text"
-                      required
-                      value={formulario.nome}
-                      onChange={handleInputChange}
-                      className="w-full"
-                      placeholder="Seu nome completo"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="telefone"
-                      className="block text-sm font-medium text-secondary mb-2"
-                    >
-                      Telefone *
-                    </label>
-                    <Input
-                      id="telefone"
-                      name="telefone"
-                      type="tel"
-                      required
-                      value={formulario.telefone}
-                      onChange={handleInputChange}
-                      className="w-full"
-                      placeholder="924709966"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-secondary mb-2"
-                  >
-                    E-mail *
-                  </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    value={formulario.email}
-                    onChange={handleInputChange}
-                    className="w-full"
-                    placeholder="seu@email.com"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="assunto"
-                    className="block text-sm font-medium text-secondary mb-2"
-                  >
-                    Assunto *
-                  </label>
-                  <Input
-                    id="assunto"
-                    name="assunto"
-                    type="text"
-                    required
-                    value={formulario.assunto}
-                    onChange={handleInputChange}
-                    className="w-full"
-                    placeholder="Assunto da sua mensagem"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="mensagem"
-                    className="block text-sm font-medium text-secondary mb-2"
-                  >
-                    Mensagem *
-                  </label>
-                  <Textarea
-                    id="mensagem"
-                    name="mensagem"
-                    required
-                    value={formulario.mensagem}
-                    onChange={handleInputChange}
-                    className="w-full h-32"
-                    placeholder="Escreva aqui a sua mensagem..."
-                  />
-                </div>
-
-                <Button
-                  type="submit"
-                  className="botao-primario w-full"
-                  disabled={enviando}
-                >
-                  {enviando ? (
-                    <>
-                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                      Enviando...
-                    </>
-                  ) : (
-                    <>
-                      Enviar Mensagem
-                      <Send className="ml-2 w-4 h-4" />
-                    </>
-                  )}
-                </Button>
-
-                <p className="text-sm text-muted-foreground">
-                  * Campos obrigatórios. Responderemos em até 24 horas.
-                </p>
-              </form>
-            </div>
-
-            {/* Mapa e Contactos Rápidos */}
-            <div className="space-y-8" data-aos="fade-left">
               {/* Mapa */}
               <div>
                 <h3 className="text-2xl font-bold text-secondary mb-4">
@@ -368,7 +239,7 @@ const Contactos = () => {
 
                   {/* E-mail */}
                   <a
-                    href="mailto:evgrupoprest@gmail.com"
+                    href="mailto:geral@evgrupo.com"
                     className="card-elegante flex items-center space-x-4 hover:bg-blue-50 transition-colors group"
                     data-aos="fade-up"
                     data-aos-delay="200"
@@ -385,12 +256,12 @@ const Contactos = () => {
                       </p>
                     </div>
                     <div className="text-blue-600 font-semibold text-sm">
-                      evgrupoprest@gmail.com
+                      geral@evgrupo.com
                     </div>
                   </a>
                 </div>
               </div>
-            </div>
+          
           </div>
         </div>
       </section>

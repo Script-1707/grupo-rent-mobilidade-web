@@ -10,7 +10,7 @@ async function main() {
 
   // Upsert the requested admin user and an example Google/public user
   await prisma.user.upsert({
-    where: { email: 'evgrupoprest@gmail.com' },
+    where: { email: 'geral@evgrupo.com' },
     update: {
       // ensure role and password are set on update as well
       role: 'ADMIN',
@@ -20,7 +20,7 @@ async function main() {
       emailVerified: new Date(),
     },
     create: {
-      email: 'evgrupoprest@gmail.com',
+      email: 'geral@evgrupo.com',
       name: 'Admin EVGrupo',
       password: adminHash,
       role: 'ADMIN',
