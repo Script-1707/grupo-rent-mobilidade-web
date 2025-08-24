@@ -7,33 +7,30 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
-
-// Vehicle models for the 'viaturas' (cars) listing module
-model Vehicle {
-  id        Int              @id @default(autoincrement())
-  make      String?
-  model     String?
-  year      Int?
-  plate     String?          @unique
-  pricePerDay Int?
-  description String?
-  destaque  String?
-  features  VehicleFeature[]
-  categoryId Int?
-  category   Category?       @relation(fields: [categoryId], references: [id])
-  createdAt DateTime         @default(now())
+// Single model for users to support local auth and OAuth (Google) later.
+enum AuthProvider {
+  LOCAL
+  GOOGLE
 }
 
-model VehicleFeature {
-  id        Int     @id @default(autoincrement())
-  text      String
-  vehicleId Int
-  vehicle   Vehicle @relation(fields: [vehicleId], references: [id])
+// Roles for authorization
+enum Role {
+  PUBLIC
+  ADMIN
 }
 
-model Category {
-  id       Int       @id @default(autoincrement())
-  name     String    @unique
-  vehicles Vehicle[]
+model User {
+  id            Int          @id @default(autoincrement())
+  email         String       @unique
+  name          String?
+  password      String?      // hashed password for local auth; null for OAuth-only users
+  role          Role         @default(PUBLIC)
+  provider      AuthProvider @default(LOCAL)
+  providerId    String?      // provider-specific id (e.g., Google sub)
+  emailVerified DateTime?
+  image         String?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  @@map("users")
 }

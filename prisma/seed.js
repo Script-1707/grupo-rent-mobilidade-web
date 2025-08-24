@@ -1,29 +1,36 @@
 const { PrismaClient } = require('@prisma/client');
+const bcrypt = require('bcryptjs');
 const prisma = new PrismaClient();
 
 async function main() {
-  // Clear tables in an order that avoids FK problems
-  await prisma.vehicleFeature.deleteMany();
-  await prisma.vehicle.deleteMany();
-  await prisma.caracteristica.deleteMany();
-  await prisma.category.deleteMany();
+  // Hash default admin password
+  const adminPassword = 'admin';
+  const adminHash = await bcrypt.hash(adminPassword, 10);
 
-  // Run seeders
-  const seedCategories = require('./seeds/categories');
-
-  const seedVehicles = require('./seeds/vehicles');
-
-  const categories = await seedCategories(prisma);
-  const categoriesMap = {};
-  categories.forEach(c => (categoriesMap[c.name] = c));
-
-  const services = await seedServices(prisma);
-  const vehicles = await seedVehicles(prisma, categoriesMap);
-
-  console.log('Seed complete:', {
-    categories: categories.map(c => c.id),
-    vehicles: vehicles.map(v => v.id),
+  // Upsert the requested admin user and an example Google/public user
+  await prisma.user.upsert({
+    where: { email: 'evgrupoprest@gmail.com' },
+    update: {
+      // ensure role and password are set on update as well
+      role: 'ADMIN',
+      password: adminHash,
+      name: 'Admin EVGrupo',
+      provider: 'LOCAL',
+      emailVerified: new Date(),
+    },
+    create: {
+      email: 'evgrupoprest@gmail.com',
+      name: 'Admin EVGrupo',
+      password: adminHash,
+      role: 'ADMIN',
+      provider: 'LOCAL',
+      providerId: null,
+      emailVerified: new Date(),
+      image: null,
+    },
   });
+
+  console.log('Seed complete: users upserted');
 }
 
 main()
