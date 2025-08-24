@@ -110,7 +110,7 @@ const RodapePrincipal = () => {
                 <MapPin className="w-5 h-5 text-primary mt-1" />
                 <div>
                   <p className="text-secondary-foreground/80">
-                    Luanda, Corimba - Frente a ENAPP
+                    Luanda, Corimba , Edifício Vegs Comercial
                   </p>
                 </div>
               </div>
@@ -118,7 +118,7 @@ const RodapePrincipal = () => {
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-primary" />
                 <div>
-                  <p className="text-secondary-foreground/60 text-sm">+244 924 709 966</p>
+                  <p className="text-secondary-foreground/80">+244 924 709 966</p>
                 </div>
               </div>
 

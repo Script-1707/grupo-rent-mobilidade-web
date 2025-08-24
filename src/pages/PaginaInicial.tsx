@@ -198,27 +198,29 @@ const PaginaInicial = () => {
             </a>
 
             {/* Localização */}
-            <Link
-              to="/contactos"
+            <a
+              href="https://maps.app.goo.gl/n35z2h2igCqgzpqt7"
+              target="_blank"
+              rel="noopener noreferrer"
               className="card-elegante text-center group hover:bg-blue-50"
               data-aos="fade-up"
               data-aos-delay={80}
             >
               <div className="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-2xl mb-6 mx-auto group-hover:bg-blue-200 transition-colors">
-                <MapPin className="w-8 h-8 text-blue-600" />
+              <MapPin className="w-8 h-8 text-blue-600" />
               </div>
               <h3 className="text-xl font-bold text-secondary mb-3">
-                Localização
+              Localização
               </h3>
               <p className="text-muted-foreground mb-4">
-                Visite nosso showroom em Luanda
+              Luanda, Corimba , Edifício Vegs Comercial
               </p>
               <span className="text-blue-600 font-semibold">Ver no Mapa</span>
-            </Link>
+            </a>
 
             {/* Instagram */}
             <a
-              href="#"
+              href="https://www.instagram.com/evgrouprentcar"
               className="card-elegante text-center group hover:bg-pink-50"
               data-aos="fade-up"
               data-aos-delay={160}

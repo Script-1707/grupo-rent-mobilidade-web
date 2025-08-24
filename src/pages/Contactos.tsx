@@ -22,7 +22,7 @@ const informacoesContacto = [
     titulo: "Localização",
     conteudo: ["Luanda, Corimba ", "Edifício Vegs Comercial"],
     acao: "Ver no Mapa",
-    link: "https://maps.app.goo.gl/kthf7RrDTnuc2Vhi9",
+    link: "https://maps.app.goo.gl/npVAkS4eUcTTeH7M6",
   },
   {
     icone: Phone,
