@@ -44,7 +44,7 @@ const CabecalhoNavegacao = () => {
             <div className="flex items-center space-x-6">
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4" />
-                <span>+244 976 045 538</span>
+                <span>+244 924 709 966</span>
               </div>
               <div className="flex items-center space-x-2">
                 <MapPin className="w-4 h-4" />
@@ -54,9 +54,6 @@ const CabecalhoNavegacao = () => {
                 <Clock className="w-4 h-4" />
                 <span>Seg-Sex: 8h-18h | Sáb: 8h-14h</span>
               </div>
-            </div>
-            <div className="flex items-center space-x-4">
-              <span>Contacto alternativo: +244 924 709 966</span>
             </div>
           </div>
         </div>

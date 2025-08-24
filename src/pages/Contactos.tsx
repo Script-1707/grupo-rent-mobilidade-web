@@ -27,9 +27,9 @@ const informacoesContacto = [
   {
     icone: Phone,
     titulo: "Telefones",
-    conteudo: ["+244 976 045 538(Principal)", "+244 924 709 966 (Alternativo)"],
+    conteudo: ["+244 924 709 966", "______________________"],
     acao: "Ligar Agora",
-    link: "tel:+244976045538",
+    link: "tel:+244924709966",
   },
   {
     icone: Mail,
@@ -42,7 +42,7 @@ const informacoesContacto = [
     icone: Clock,
     titulo: "Horário de Atendimento",
     conteudo: ["Segunda - Sexta: 8h - 18h", "Sábado: 8h - 14h"],
-    acao: "Reservar Agora",
+    acao: "Reserva",
     link: "/reservas",
   },
 ];
@@ -125,7 +125,7 @@ const Contactos = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-  <section className="py-20 gradiente-hero text-white" data-aos="fade-up" data-aos-duration="1000">
+      <section className="py-20 gradiente-hero text-white" data-aos="fade-up" data-aos-duration="1000">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
@@ -224,7 +224,7 @@ const Contactos = () => {
                       value={formulario.telefone}
                       onChange={handleInputChange}
                       className="w-full"
-                      placeholder="+244 976045538"
+                      placeholder="924709966"
                     />
                   </div>
                 </div>
@@ -347,7 +347,7 @@ const Contactos = () => {
                 <div className="space-y-4">
                   {/* WhatsApp */}
                   <a
-                    href="https://wa.me/244976045538"
+                    href="https://wa.me/244924709966"
                     className="card-elegante flex items-center space-x-4 hover:bg-green-50 transition-colors group"
                     data-aos="fade-up"
                     data-aos-delay="0"
@@ -362,27 +362,6 @@ const Contactos = () => {
                       </p>
                     </div>
                     <div className="text-green-600 font-semibold">
-                      +244 976 045 538
-                    </div>
-                  </a>
-
-                  {/* Emergência */}
-                  <a
-                    href="tel:+244976045538"
-                    className="card-elegante flex items-center space-x-4 hover:bg-red-50 transition-colors group"
-                    data-aos="fade-up"
-                    data-aos-delay="100"
-                  >
-                    <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center group-hover:bg-red-200 transition-colors">
-                      <Phone className="w-6 h-6 text-red-600" />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-semibold text-secondary">Telefone</h4>
-                      <p className="text-muted-foreground text-sm">
-                        Contacto alternativo
-                      </p>
-                    </div>
-                    <div className="text-red-600 font-semibold">
                       +244 924 709 966
                     </div>
                   </a>

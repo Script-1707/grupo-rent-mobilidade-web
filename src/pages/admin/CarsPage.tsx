@@ -291,7 +291,7 @@ const CarsPage = () => {
                             </div>
 
                             <Button className="w-full bg-gradient-primary hover:bg-gradient-primary/90 text-sm">
-                              Reservar Agora
+                              Reservar
                             </Button>
                           </CardContent>
                         </Card>

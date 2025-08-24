@@ -151,11 +151,11 @@ const Frotas = ({ token }) => {
 
   return (
     <div className="min-h-screen bg-background">
-  {/* Pesquisa (topo) */}
-  <section className="py-6" data-aos="fade-down">
+      {/* Pesquisa (topo) */}
+      <section className="py-6" data-aos="fade-down">
         <div className="container mx-auto px-4 flex justify-center">
           <div className="w-full sm:w-96">
-            
+
             <input
               aria-label="Pesquisar por nome"
               value={searchQuery}
@@ -167,8 +167,8 @@ const Frotas = ({ token }) => {
         </div>
       </section>
 
-  {/* Filtros (abaixo da pesquisa) */}
-  <section className="py-4 bg-muted/30" data-aos="fade-up">
+      {/* Filtros (abaixo da pesquisa) */}
+      <section className="py-4 bg-muted/30" data-aos="fade-up">
         <div className="container mx-auto px-4 flex flex-wrap gap-4 justify-center items-center">
           <div className="flex flex-col items-center">
             <span className="text-sm text-red-600 font-medium mb-1 text-center flex items-center">
@@ -249,26 +249,26 @@ const Frotas = ({ token }) => {
         </div>
       </section>
 
-  {/* Lista de carros */}
-  <section className="py-16">
+      {/* Lista de carros */}
+      <section className="py-16">
         <div className="container mx-auto px-4 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {carsFiltrados.length === 0 ? (
             <p className="text-center col-span-full">Nenhum veículo encontrado com os filtros selecionados.</p>
           ) : (
-    carsFiltrados.map((car) => (
-    <Card
-              key={car.id}
-      className="overflow-hidden hover:scale-105 shadow-elegant w-full"
-      data-aos="zoom-in"
-            >
-              <div className="relative">
-                <img
-                  src={car.image || "https://via.placeholder.com/800x400"}
-                  alt={car.name || "—"}
-                  className="w-full h-60 object-cover"
-                />
-                <Badge
-                  className={`absolute top-4 left-4 ${{
+            carsFiltrados.map((car) => (
+              <Card
+                key={car.id}
+                className="overflow-hidden hover:scale-105 shadow-elegant w-full"
+                data-aos="zoom-in"
+              >
+                <div className="relative">
+                  <img
+                    src={car.image || "https://via.placeholder.com/800x400"}
+                    alt={car.name || "—"}
+                    className="w-full h-60 object-cover"
+                  />
+                  <Badge
+                    className={`absolute top-4 left-4 ${{
                       ECONÓMICO: "bg-green-500",
                       SUV: "bg-yellow-500",
                       PICKUP: "bg-gray-500",
@@ -276,65 +276,65 @@ const Frotas = ({ token }) => {
                       INTERMEDIÁRIO: "bg-blue-700",
                       LUXO: "bg-purple-600",
                     }[car.category?.name] || "bg-gray-400"
-                    }`}
-                >
-                  {car.category?.name || "—"}
-                </Badge>
-              </div>
-
-              <CardHeader>
-                <CardTitle className="text-xl">{car.name || "—"}</CardTitle>
-                <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-1">
-                    <Users className="w-4 h-4" />
-                    {car.seats || "—"} lugares
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Fuel className="w-4 h-4" />
-                    {car.fuelType || "—"}
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Settings className="w-4 h-4" />
-                    {car.transmission || "—"}
-                  </div>
-                </div>
-              </CardHeader>
-
-              <CardContent className="space-y-4">
-                {car.specifications?.length > 0 && (
-                  <div>
-                    <h4 className="font-semibold mb-2">Características:</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {car.specifications.map((spec) => (
-                        <Badge
-                          key={spec.id}
-                          variant="secondary"
-                          className="text-xs"
-                        >
-                          {spec.name}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                <div className="space-y-2">
-                  <h4 className="font-semibold">Preços:</h4>
-                  <div className="text-sm space-y-1">
-                    <div className="flex justify-between">
-                      <span>Desde AOA</span>
-                      <span className="font-medium">
-                        {car.priceDaily ? formatPrice(car.priceDaily) : "—"}
-                      </span> / dia
-                    </div>
-                  </div>
+                      }`}
+                  >
+                    {car.category?.name || "—"}
+                  </Badge>
                 </div>
 
-                <Button className="w-full bg-gradient-primary hover:bg-gradient-primary/90">
-                  Reservar Agora
-                </Button>
-              </CardContent>
-            </Card>
+                <CardHeader>
+                  <CardTitle className="text-xl">{car.name || "—"}</CardTitle>
+                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-1">
+                      <Users className="w-4 h-4" />
+                      {car.seats || "—"} lugares
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Fuel className="w-4 h-4" />
+                      {car.fuelType || "—"}
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Settings className="w-4 h-4" />
+                      {car.transmission || "—"}
+                    </div>
+                  </div>
+                </CardHeader>
+
+                <CardContent className="space-y-4">
+                  {car.specifications?.length > 0 && (
+                    <div>
+                      <h4 className="font-semibold mb-2">Características:</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {car.specifications.map((spec) => (
+                          <Badge
+                            key={spec.id}
+                            variant="secondary"
+                            className="text-xs"
+                          >
+                            {spec.name}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="space-y-2">
+                    <h4 className="font-semibold">Preços:</h4>
+                    <div className="text-sm space-y-1">
+                      <div className="flex justify-between">
+                        <span>Desde AOA</span>
+                        <span className="font-medium">
+                          {car.priceDaily ? formatPrice(car.priceDaily) : "—"}
+                        </span> / dia
+                      </div>
+                    </div>
+                  </div>
+
+                  <Button className="w-full bg-primary hover:bg-gradient-primary/90">
+                    Reservar
+                  </Button>
+                </CardContent>
+              </Card>
             ))
           )}
         </div>

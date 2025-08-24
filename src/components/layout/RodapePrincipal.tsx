@@ -1,17 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  MapPin, 
-  Phone, 
-  Mail, 
-  Clock, 
-  Facebook, 
-  Instagram, 
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Facebook,
+  Instagram,
   Youtube,
   Car,
   Shield,
   Users,
-  Star
+  Star,
+  LinkedinIcon
 } from 'lucide-react';
 
 const RodapePrincipal = () => {
@@ -20,42 +21,42 @@ const RodapePrincipal = () => {
       {/* Seção principal do rodapé */}
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          
+
           {/* Informações da empresa */}
           <div className="space-y-6">
             <div>
-              <img 
-                src="/lovable-uploads/e0189d0b-1841-48f6-a716-d4575b450a80.png" 
-                alt="EV Grupo Rent Car" 
+              <img
+                src="/lovable-uploads/e0189d0b-1841-48f6-a716-d4575b450a80.png"
+                alt="EV Grupo Rent Car"
                 className="h-16 w-auto mb-4 filter brightness-0 invert"
               />
               <p className="text-secondary-foreground/80 leading-relaxed">
-                A EV Grupo Rent Car é líder em aluguer de viaturas em Angola, 
+                A EV Grupo Rent Car é líder em aluguer de viaturas em Angola,
                 oferecendo soluções de mobilidade seguras e confortáveis há mais de 10 anos.
               </p>
             </div>
-            
+
             <div className="flex space-x-4">
-              <a 
-                href="#" 
+              <a
+                href="https://web.facebook.com/evgrupo?mibextid=wwXIfr&rdid=QSOwKJWUxbDdsQTp&share_url=https%3A%2F%2Fweb.facebook.com%2Fshare%2F1AsoYpCN5S%2F%3Fmibextid%3DwwXIfr%26_rdc%3D1%26_rdr"
                 className="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-primary-hover transition-colors"
                 aria-label="Facebook"
               >
                 <Facebook className="w-5 h-5 text-white" />
               </a>
-              <a 
-                href="#" 
+              <a
+                href="https://www.instagram.com/evgrouprentcar"
                 className="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-primary-hover transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5 text-white" />
               </a>
-              <a 
-                href="#" 
+              <a
+                href="https://www.linkedin.com/company/evgrouprentcar/?viewAsMember=true"
                 className="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-primary-hover transition-colors"
-                aria-label="YouTube"
+                aria-label="Linkedin"
               >
-                <Youtube className="w-5 h-5 text-white" />
+                <LinkedinIcon className="w-5 h-5 text-white" />
               </a>
             </div>
           </div>
@@ -72,7 +73,7 @@ const RodapePrincipal = () => {
                 { nome: 'Contactos', caminho: '/contactos' }
               ].map((link) => (
                 <li key={link.caminho}>
-                  <Link 
+                  <Link
                     to={link.caminho}
                     className="text-secondary-foreground/80 hover:text-primary transition-colors duration-300"
                   >
@@ -113,20 +114,19 @@ const RodapePrincipal = () => {
                   </p>
                 </div>
               </div>
-              
+
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-primary" />
                 <div>
-                  <p className="text-secondary-foreground/80">+244 976 045 538</p>
                   <p className="text-secondary-foreground/60 text-sm">+244 924 709 966</p>
                 </div>
               </div>
-              
+
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-primary" />
                 <p className="text-secondary-foreground/80">evgrupoprest@gmail.com</p>
               </div>
-              
+
               <div className="flex items-start space-x-3">
                 <Clock className="w-5 h-5 text-primary mt-1" />
                 <div>
@@ -144,29 +144,29 @@ const RodapePrincipal = () => {
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-secondary-foreground/60 text-sm">
-              © 2024 EV Grupo Rent Car. Todos os direitos reservados.
+              © 2025 EV Grupo Rent Car. Todos os direitos reservados.
             </div>
             <div className="flex items-center space-x-6 text-secondary-foreground/60 text-sm">
-                <a
-                  href="/static/Portfolio.pdf"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.open('/static/Portfolio.pdf', '_blank', 'noopener,noreferrer');
-                  }}
-                  className="hover:text-primary transition-colors"
-                >
-                  Nosso portfólio
-                </a>
-                <a
-                  href="/static/Tabela.pdf"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.open('/static/Tabela.pdf', '_blank', 'noopener,noreferrer');
-                  }}
-                  className="hover:text-primary transition-colors"
-                >
-                  Tabela de preços
-                </a>
+              <a
+                href="/static/Portfolio.pdf"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.open('/static/Portfolio.pdf', '_blank', 'noopener,noreferrer');
+                }}
+                className="hover:text-primary transition-colors"
+              >
+                Nosso portfólio
+              </a>
+              <a
+                href="/static/Tabela.pdf"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.open('/static/Tabela.pdf', '_blank', 'noopener,noreferrer');
+                }}
+                className="hover:text-primary transition-colors"
+              >
+                Tabela de preços
+              </a>
             </div>
           </div>
         </div>

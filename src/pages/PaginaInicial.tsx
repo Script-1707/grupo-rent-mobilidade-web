@@ -65,30 +65,10 @@ const categoriasCarros = [
   },
 ];
 
-const depoimentos = [
-  {
-    id: 1,
-    nome: "João Manuel",
-    cargo: "Empresário",
-    texto:
-      "A EV GRUPO sempre nos atendeu com pontualidade e viaturas em ótimo estado. Confiança total.",
-    avaliacao: 5,
-    foto: null,
-  },
-  {
-    id: 2,
-    nome: "Dra. Ana C.",
-    cargo: "Consultora",
-    texto:
-      " O serviço executivo com motorista é excelente, recomendo.",
-    avaliacao: 5,
-    foto: null,
-  },
-];
 
 const estatisticas = [
   { numero: "10+", label: "Anos de Experiência" },
-  { numero: "500+", label: "Carros na Frota" },
+  { numero: "100+", label: "Carros na Frota" },
   { numero: "5000+", label: "Clientes Satisfeitos" },
   { numero: "24/7", label: "Suporte Disponível" },
 ];
@@ -159,9 +139,7 @@ const PaginaInicial = () => {
                 </p>
 
                 <div className="flex items-center justify-between">
-                  <span className="text-xl font-bold text-primary">
-                    {categoria.preco}
-                  </span>
+                
                   <Link to={`/frotas`}>
                     <Button variant="ghost" className="group">
                       Ver Carros
@@ -184,57 +162,7 @@ const PaginaInicial = () => {
         </div>
       </section>
 
-      {/* Depoimentos */}
-      <section className="py-20 bg-muted">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="titulo-secao">O que Dizem Nossos Clientes</h2>
-            <p className="subtitulo max-w-3xl mx-auto">
-              A satisfação dos nossos clientes é a nossa maior recompensa. Veja
-              o que eles têm a dizer sobre nossos serviços.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {depoimentos.map((depoimento, idx) => (
-              <div key={depoimento.id} className="card-elegante" data-aos="fade-up" data-aos-delay={20 * idx}>
-                <div className="flex items-center mb-4">
-                  {[...Array(depoimento.avaliacao)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-5 h-5 text-yellow-400 fill-current"
-                    />
-                  ))}
-                </div>
-
-                <blockquote className="text-muted-foreground mb-6 leading-relaxed italic">
-                  "{depoimento.texto}"
-                </blockquote>
-
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
-                    <span className="text-primary font-semibold text-lg">
-                      {depoimento.nome
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")}
-                    </span>
-                  </div>
-                  <div>
-                    <div className="font-semibold text-secondary">
-                      {depoimento.nome}
-                    </div>
-                    <div className="text-muted-foreground text-sm">
-                      {depoimento.cargo}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+  
       {/* Chamadas Rápidas */}
       <section className="py-20">
         <div className="container mx-auto px-4">
@@ -249,7 +177,7 @@ const PaginaInicial = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* WhatsApp */}
             <a
-              href="https://wa.me/244976045538"
+              href="https://wa.me/+244924709966"
               className="card-elegante text-center group hover:bg-green-50"
               data-aos="fade-up"
               data-aos-delay={0}
@@ -264,7 +192,7 @@ const PaginaInicial = () => {
                 Fale connosco instantaneamente pelo WhatsApp
               </p>
               <span className="text-green-600 font-semibold">
-                +244 976 045 538
+                +244 924 709 966
               </span>
             </a>
 
