@@ -27,14 +27,14 @@ const informacoesContacto = [
   {
     icone: Phone,
     titulo: "Telefones",
-    conteudo: ["+244 924 709 966", "______________________"],
+    conteudo: ["+244 924 709 966", "+244 976 045 538"],
     acao: "Ligar Agora",
     link: "tel:+244924709966",
   },
   {
     icone: Mail,
     titulo: "E-mails",
-    conteudo: ["geral@evgrupo.com", "______________________"],
+    conteudo: ["geral@evgrupo.com", "marketing@evgrupo.com"],
     acao: "Enviar E-mail",
     link: "mailto:geral@evgrupo.com",
   },
