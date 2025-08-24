@@ -15,7 +15,7 @@ const slidesHero = [
       "Desde viaturas económicas até carros de luxo, temos a solução perfeita para sua viagem.",
     imagem: heroImage1,
     botaoPrincipal: "Reservar Agora",
-    botaoSecundario: "Ver Frota",
+    botaoSecundario: "Explorar Frota",
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ const slidesHero = [
     descricao: "Confiança de milhares de clientes e parceiros em todo o país.",
     imagem: heroImage2,
     botaoPrincipal: "Reservar Agora",
-    botaoSecundario: "Ver Frota",
+    botaoSecundario: "Explorar Frota",
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ const slidesHero = [
       "Nossa equipe está sempre pronta para atendê-lo em qualquer situação.",
     imagem: heroImage1,
     botaoPrincipal: "Reservar Agora",
-    botaoSecundario: "Ver Frota",
+    botaoSecundario: "Explorar Frota",
   },
 ];
 
@@ -105,8 +105,8 @@ const HeroSlider = () => {
           <div className="max-w-4xl">
             <div
               className={`transition-all duration-700 ${animando
-                  ? "opacity-0 translate-y-10"
-                  : "opacity-100 translate-y-0"
+                ? "opacity-0 translate-y-10"
+                : "opacity-100 translate-y-0"
                 }`}
             >
               {/* Título principal */}
@@ -134,11 +134,9 @@ const HeroSlider = () => {
                 </Link>
 
                 <Link to="/frotas">
-                  <Button
-                    variant="outline"
-                    className="border-2 text-white hover:bg-white hover:text-secondary text-lg px-10 py-6 bg-transparent group"
-                  >
+                  <Button className="botao-secundario bg-white text-primary  hover:text-white text-lg px-10 py-6 group">
                     {slide.botaoSecundario}
+                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
               </div>
@@ -155,8 +153,8 @@ const HeroSlider = () => {
               key={indice}
               onClick={() => irParaSlide(indice)}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${indice === slideAtual
-                  ? "bg-primary scale-125"
-                  : "bg-white/50 hover:bg-white/75"
+                ? "bg-primary scale-125"
+                : "bg-white/50 hover:bg-white/75"
                 }`}
               aria-label={`Ir para slide ${indice + 1}`}
             />
