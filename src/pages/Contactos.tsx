@@ -20,7 +20,7 @@ const informacoesContacto = [
   {
     icone: MapPin,
     titulo: "Localização",
-    conteudo: ["Luanda, Corimba ", "Frente a ENAPP"],
+    conteudo: ["Luanda, Corimba ", "Edifício Vegs Comercial"],
     acao: "Ver no Mapa",
     link: "https://maps.app.goo.gl/kthf7RrDTnuc2Vhi9",
   },
@@ -180,88 +180,88 @@ const Contactos = () => {
       <section className="py-20 bg-muted">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-           
 
-              {/* Mapa */}
-              <div>
-                <h3 className="text-2xl font-bold text-secondary mb-4">
-                  Nossa Localização
-                </h3>
-                <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-8 h-80 flex items-center justify-center">
-                  <div className="text-center">
-                    <MapPin className="w-16 h-16 text-primary mx-auto mb-4" />
-                    <h4 className="text-xl font-semibold text-secondary mb-2">
-                      Showroom Principal
-                    </h4>
-                    <p className="text-muted-foreground">
-                      Luanda, Corimba - Frente a ENAPP
-                    </p>
-                    <Button className="botao-outline mt-4" asChild>
-                      <a
-                        href="https://share.google/jpw6iQ1MEFyJjLgfh"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Abrir no Google Maps
-                      </a>
-                    </Button>
+
+            {/* Mapa */}
+            <div>
+              <h3 className="text-2xl font-bold text-secondary mb-4">
+                Nossa Localização
+              </h3>
+              <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-8 h-80 flex items-center justify-center">
+                <div className="text-center">
+                  <MapPin className="w-16 h-16 text-primary mx-auto mb-4" />
+                  <h4 className="text-xl font-semibold text-secondary mb-2">
+                    Showroom Principal
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Estamos localizados na estrada direita da samba, Corimba, edifício Vegs Comercial, defronte ao ENAPP
+                  </p>
+                  <Button className="botao-outline mt-4" asChild>
+                    <a
+                      href="https://share.google/jpw6iQ1MEFyJjLgfh"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Abrir no Google Maps
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+            {/* Contactos Rápidos */}
+            <div>
+              <h3 className="text-2xl font-bold text-secondary mb-6">
+                Contactos Rápidos
+              </h3>
+
+              <div className="space-y-4">
+                {/* WhatsApp */}
+                <a
+                  href="https://wa.me/244924709966"
+                  className="card-elegante flex items-center space-x-4 hover:bg-green-50 transition-colors group"
+                  data-aos="fade-up"
+                  data-aos-delay="0"
+                >
+                  <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center group-hover:bg-green-200 transition-colors">
+                    <MessageCircle className="w-6 h-6 text-green-600" />
                   </div>
-                </div>
+                  <div className="flex-1">
+                    <h4 className="font-semibold text-secondary">WhatsApp</h4>
+                    <p className="text-muted-foreground text-sm">
+                      Fale connosco instantaneamente
+                    </p>
+                  </div>
+                  <div className="text-green-600 font-semibold">
+                    +244 924 709 966
+                  </div>
+                </a>
+
+                {/* E-mail */}
+                <a
+                  href="mailto:geral@evgrupo.com"
+                  className="card-elegante flex items-center space-x-4 hover:bg-blue-50 transition-colors group"
+                  data-aos="fade-up"
+                  data-aos-delay="200"
+                >
+                  <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center group-hover:bg-blue-200 transition-colors">
+                    <Mail className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-semibold text-secondary">
+                      E-mail Geral
+                    </h4>
+                    <p className="text-muted-foreground text-sm">
+                      Informações e esclarecimentos
+                    </p>
+                  </div>
+                  <div className="text-blue-600 font-semibold text-sm">
+                    geral@evgrupo.com
+                  </div>
+                </a>
               </div>
+            </div>
 
-              {/* Contactos Rápidos */}
-              <div>
-                <h3 className="text-2xl font-bold text-secondary mb-6">
-                  Contactos Rápidos
-                </h3>
-
-                <div className="space-y-4">
-                  {/* WhatsApp */}
-                  <a
-                    href="https://wa.me/244924709966"
-                    className="card-elegante flex items-center space-x-4 hover:bg-green-50 transition-colors group"
-                    data-aos="fade-up"
-                    data-aos-delay="0"
-                  >
-                    <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center group-hover:bg-green-200 transition-colors">
-                      <MessageCircle className="w-6 h-6 text-green-600" />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-semibold text-secondary">WhatsApp</h4>
-                      <p className="text-muted-foreground text-sm">
-                        Fale connosco instantaneamente
-                      </p>
-                    </div>
-                    <div className="text-green-600 font-semibold">
-                      +244 924 709 966
-                    </div>
-                  </a>
-
-                  {/* E-mail */}
-                  <a
-                    href="mailto:geral@evgrupo.com"
-                    className="card-elegante flex items-center space-x-4 hover:bg-blue-50 transition-colors group"
-                    data-aos="fade-up"
-                    data-aos-delay="200"
-                  >
-                    <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center group-hover:bg-blue-200 transition-colors">
-                      <Mail className="w-6 h-6 text-blue-600" />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-semibold text-secondary">
-                        E-mail Geral
-                      </h4>
-                      <p className="text-muted-foreground text-sm">
-                        Informações e esclarecimentos
-                      </p>
-                    </div>
-                    <div className="text-blue-600 font-semibold text-sm">
-                      geral@evgrupo.com
-                    </div>
-                  </a>
-                </div>
-              </div>
-          
           </div>
         </div>
       </section>

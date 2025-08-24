@@ -48,11 +48,11 @@ const CabecalhoNavegacao = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <MapPin className="w-4 h-4" />
-                <span>Luanda, Angola</span>
+                <span>Edifício Vegs Comercial</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="w-4 h-4" />
-                <span>Seg-Sex: 8h-18h | Sáb: 8h-14h</span>
+                <span>Seg-Sex: 8h-17h | Sáb: 8h-14h</span>
               </div>
             </div>
           </div>
@@ -61,11 +61,10 @@ const CabecalhoNavegacao = () => {
 
       {/* Navegação principal */}
       <header
-        className={`sticky top-0 z-50 transition-all duration-300 ${
-          scrolled
+        className={`sticky top-0 z-50 transition-all duration-300 ${scrolled
             ? "bg-background/95 backdrop-blur-md shadow-card"
             : "bg-background"
-        }`}
+          }`}
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
@@ -84,9 +83,8 @@ const CabecalhoNavegacao = () => {
                 <Link
                   key={item.caminho}
                   to={item.caminho}
-                  className={`text-foreground hover:text-primary transition-colors duration-300 font-medium relative group ${
-                    localizacao.pathname === item.caminho ? "text-primary" : ""
-                  }`}
+                  className={`text-foreground hover:text-primary transition-colors duration-300 font-medium relative group ${localizacao.pathname === item.caminho ? "text-primary" : ""
+                    }`}
                 >
                   {item.nome}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
@@ -126,11 +124,10 @@ const CabecalhoNavegacao = () => {
                     key={item.caminho}
                     to={item.caminho}
                     onClick={fecharMenu}
-                    className={`text-foreground hover:text-primary transition-colors duration-300 font-medium py-2 ${
-                      localizacao.pathname === item.caminho
+                    className={`text-foreground hover:text-primary transition-colors duration-300 font-medium py-2 ${localizacao.pathname === item.caminho
                         ? "text-primary"
                         : ""
-                    }`}
+                      }`}
                   >
                     {item.nome}
                   </Link>
