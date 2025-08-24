@@ -68,7 +68,6 @@ const RodapePrincipal = () => {
                 { nome: 'Sobre Nós', caminho: '/sobre' },
                 { nome: 'Nossa Frota', caminho: '/frota' },
                 { nome: 'Serviços', caminho: '/servicos' },
-                { nome: 'Promoções', caminho: '/promocoes' },
                 { nome: 'Reservas', caminho: '/reservas' },
                 { nome: 'Contactos', caminho: '/contactos' }
               ].map((link) => (
@@ -148,15 +147,26 @@ const RodapePrincipal = () => {
               © 2024 EV Grupo Rent Car. Todos os direitos reservados.
             </div>
             <div className="flex items-center space-x-6 text-secondary-foreground/60 text-sm">
-              <Link to="#" className="hover:text-primary transition-colors">
-                Política de Privacidade
-              </Link>
-              <Link to="#" className="hover:text-primary transition-colors">
-                Termos de Uso
-              </Link>
-              <Link to="#" className="hover:text-primary transition-colors">
-                Política de Cookies
-              </Link>
+                <a
+                  href="/static/Portfolio.pdf"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.open('/static/Portfolio.pdf', '_blank', 'noopener,noreferrer');
+                  }}
+                  className="hover:text-primary transition-colors"
+                >
+                  Nosso portfólio
+                </a>
+                <a
+                  href="/static/Tabela.pdf"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.open('/static/Tabela.pdf', '_blank', 'noopener,noreferrer');
+                  }}
+                  className="hover:text-primary transition-colors"
+                >
+                  Tabela de preços
+                </a>
             </div>
           </div>
         </div>

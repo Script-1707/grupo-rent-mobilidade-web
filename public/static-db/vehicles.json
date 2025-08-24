@@ -1,0 +1,173 @@
+[
+  {
+    "category": "Económico",
+    "description": "Ideal para uso urbano e viagens económicas",
+    "cars": [
+      {
+        "name": "Suzuki Celerio",
+        "image": "/cars/SuzukiCelerio.jpg",
+        "seats": 5,
+        "transmission": "manual",
+        "fuel_type": "Gasolina",
+        "specifications": ["Ar Condicionado", "Rádio", "Direcção Assistida"],
+        "price_daily": 50000
+      },
+      {
+        "name": "Suzuki S-Presso",
+        "image": "/cars/SuzukiS-Presso.jpg",
+        "seats": 5,
+        "transmission": "manual",
+        "fuel_type": "Gasolina",
+        "specifications": ["Ar Condicionado", "USB", "ABS"],
+        "price_daily": 48000
+      },
+      {
+        "name": "Suzuki SWIFT",
+        "image": "/cars/SuzukiSWIFT.jpg",
+        "seats": 5,
+        "transmission": "automatic",
+        "fuel_type": "Gasolina",
+        "specifications": ["Ar Condicionado", "Bluetooth", "Airbags"],
+        "price_daily": 54500
+      }
+    ]
+  },
+  {
+    "category": "Intermédio",
+    "description": "Conforto e versatilidade para viagens familiares",
+    "cars": [
+      {
+        "name": "Kia Sportage",
+        "image": "/cars/KiaSportage.jpg",
+        "seats": 5,
+        "transmission": "automatic",
+        "fuel_type": "Híbrido",
+        "specifications": ["Ar Condicionado", "Câmara Traseira", "Bluetooth"],
+        "price_daily": 150000
+      },
+      {
+        "name": "Hyundai Creta",
+        "image": "/cars/HyundaiCreta.jpg",
+        "seats": 5,
+        "transmission": "automatic",
+        "fuel_type": "Gasolina",
+        "specifications": ["Ar Condicionado", "Touchscreen", "Airbags"],
+        "price_daily": 100000
+      }
+    ]
+  },
+  {
+    "category": "Luxo",
+    "description": "Máximo conforto e prestígio",
+    "cars": [
+      {
+        "name": "Maseratti",
+        "image": "/cars/Maseratti.jpg",
+        "seats": 5,
+        "transmission": "automatic",
+        "fuel_type": "Gasolina",
+        "specifications": ["Pele", "Sistema de Som Premium", "GPS", "Câmaras 360°"],
+        "price_daily": 400000
+      },
+      {
+        "name": "Mercedes G63 AMG",
+        "image": "/cars/MercedesG63AMG.png",
+        "seats": 5,
+        "transmission": "automatic",
+        "fuel_type": "Gasolina",
+        "specifications": ["Pele", "Tecto Solar", "Sistema AMG", "Wi-Fi"],
+        "price_daily": 750000
+      },
+      {
+        "name": "Range Rover 2025",
+        "image": "/cars/RangeRover2025.png",
+        "seats": 5,
+        "transmission": "automatic",
+        "fuel_type": "Híbrido",
+        "specifications": ["Pele", "Massagem", "Ar Condicionado Multi-zona"],
+        "price_daily": 1200000
+      }
+    ]
+  },
+  {
+    "category": "SUV",
+    "description": "Robustez e versatilidade para qualquer terreno",
+    "cars": [
+      {
+        "name": "Toyota Prado",
+        "image": "/cars/ToyotaPrado.jpg",
+        "seats": 7,
+        "transmission": "automatic",
+        "fuel_type": "Diesel",
+        "specifications": ["4x4", "Ar Condicionado", "GPS", "Bluetooth"],
+        "price_daily": 250000
+      },
+      {
+        "name": "Toyota Fortuner",
+        "image": "/cars/ToyotaFortuner.jpg",
+        "seats": 7,
+        "transmission": "automatic",
+        "fuel_type": "Diesel",
+        "specifications": ["4x4", "Câmara Traseira", "Bluetooth", "USB"],
+        "price_daily": 250000
+      },
+      {
+        "name": "Lexus 570",
+        "image": "/cars/Lexus570.png",
+        "seats": 8,
+        "transmission": "automatic",
+        "fuel_type": "Gasolina",
+        "specifications": ["Pele", "Sistema Premium", "GPS", "4x4"],
+        "price_daily": 470000
+      }
+    ]
+  },
+  {
+    "category": "Pick-up",
+    "description": "Força e capacidade de carga",
+    "cars": [
+      {
+        "name": "Toyota Hilux",
+        "image": "/cars/ToyotaHilux.png",
+        "seats": 5,
+        "transmission": "manual",
+        "fuel_type": "Diesel",
+        "specifications": ["4x4", "Ar Condicionado", "Bluetooth", "Caçamba"],
+        "price_daily": 152000
+      }
+    ]
+  },
+  {
+    "category": "Van & Grupo",
+    "description": "Espaço e conforto para grupos",
+    "cars": [
+      {
+        "name": "Hyundai H1",
+        "image": "/cars/HyundaiH1.jpg",
+        "seats": 12,
+        "transmission": "manual",
+        "fuel_type": "Diesel",
+        "specifications": ["Ar Condicionado", "Rádio", "Múltiplas Portas"],
+        "price_daily": 300000
+      },
+      {
+        "name": "Hyundai Staria",
+        "image": "/cars/HyundaiStaria.jpg",
+        "seats": 11,
+        "transmission": "automatic",
+        "fuel_type": "Diesel",
+        "specifications": ["Ar Condicionado", "Bluetooth", "USB", "Conforto"],
+        "price_daily": 450000
+      },
+      {
+        "name": "Mercedes Viano",
+        "image": "/cars/MercedesViano.jpg",
+        "seats": 8,
+        "transmission": "automatic",
+        "fuel_type": "Diesel",
+        "specifications": ["Pele", "Ar Condicionado", "GPS", "Premium"],
+        "price_daily": 450000
+      }
+    ]
+  }
+]

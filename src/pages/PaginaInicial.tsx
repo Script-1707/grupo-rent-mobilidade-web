@@ -71,25 +71,16 @@ const depoimentos = [
     nome: "João Manuel",
     cargo: "Empresário",
     texto:
-      "Serviço pontual, carros impecáveis e equipa atenciosa. Recomendo sem reservas!",
+      "A EV GRUPO sempre nos atendeu com pontualidade e viaturas em ótimo estado. Confiança total.",
     avaliacao: 5,
     foto: null,
   },
   {
     id: 2,
-    nome: "Dra. Ana Cristina",
-    cargo: "Médica",
+    nome: "Dra. Ana C.",
+    cargo: "Consultora",
     texto:
-      "Recomendo a EV Grupo para viagens de negócios e eventos. Profissionalismo exemplar.",
-    avaliacao: 5,
-    foto: null,
-  },
-  {
-    id: 3,
-    nome: "Carlos Silva",
-    cargo: "Diretor de Marketing",
-    texto:
-      "Excelente atendimento e frota sempre renovada. Nossa empresa confia na EV Grupo.",
+      " O serviço executivo com motorista é excelente, recomendo.",
     avaliacao: 5,
     foto: null,
   },
@@ -113,7 +104,7 @@ const PaginaInicial = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {estatisticas.map((stat, indice) => (
-              <div key={indice} className="text-center">
+              <div key={indice} className="text-center" data-aos="fade-up" data-aos-delay={20 * indice}>
                 <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
                   {stat.numero}
                 </div>
@@ -139,12 +130,13 @@ const PaginaInicial = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {categoriasCarros.map((categoria) => (
+            {categoriasCarros.map((categoria, idx) => (
               <div
                 key={categoria.id}
-                className={`card-elegante group cursor-pointer ${
-                  categoria.destaque ? "ring-2 ring-primary" : ""
-                }`}
+                className={`card-elegante group cursor-pointer ${categoria.destaque ? "ring-2 ring-primary" : ""
+                  }`}
+                data-aos="zoom-in"
+                data-aos-delay={30 * idx}
               >
                 {categoria.destaque && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
@@ -203,9 +195,9 @@ const PaginaInicial = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {depoimentos.map((depoimento) => (
-              <div key={depoimento.id} className="card-elegante">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {depoimentos.map((depoimento, idx) => (
+              <div key={depoimento.id} className="card-elegante" data-aos="fade-up" data-aos-delay={20 * idx}>
                 <div className="flex items-center mb-4">
                   {[...Array(depoimento.avaliacao)].map((_, i) => (
                     <Star
@@ -259,6 +251,8 @@ const PaginaInicial = () => {
             <a
               href="https://wa.me/244976045538"
               className="card-elegante text-center group hover:bg-green-50"
+              data-aos="fade-up"
+              data-aos-delay={0}
             >
               <div className="flex items-center justify-center w-16 h-16 bg-green-100 rounded-2xl mb-6 mx-auto group-hover:bg-green-200 transition-colors">
                 <Phone className="w-8 h-8 text-green-600" />
@@ -278,6 +272,8 @@ const PaginaInicial = () => {
             <Link
               to="/contactos"
               className="card-elegante text-center group hover:bg-blue-50"
+              data-aos="fade-up"
+              data-aos-delay={80}
             >
               <div className="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-2xl mb-6 mx-auto group-hover:bg-blue-200 transition-colors">
                 <MapPin className="w-8 h-8 text-blue-600" />
@@ -295,6 +291,8 @@ const PaginaInicial = () => {
             <a
               href="#"
               className="card-elegante text-center group hover:bg-pink-50"
+              data-aos="fade-up"
+              data-aos-delay={160}
             >
               <div className="flex items-center justify-center w-16 h-16 bg-pink-100 rounded-2xl mb-6 mx-auto group-hover:bg-pink-200 transition-colors">
                 <Instagram className="w-8 h-8 text-pink-600" />
@@ -315,17 +313,17 @@ const PaginaInicial = () => {
 
       {/* Call to Action Final */}
       <section className="py-20 gradiente-hero">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <div className="container mx-auto px-4 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6" data-aos="fade-down"> 
             Pronto para a Sua Próxima Viagem?
           </h2>
-          <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+          <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay={40}>
             Reserve agora e desfrute da melhor experiência em aluguer de
             viaturas em Angola.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/reservas">
-              <Button className="bg-white text-primary hover:bg-white/90 px-10 py-6 text-lg font-semibold rounded-xl">
+              <Button className="bg-white text-primary hover:bg-white/90 px-10 py-6 text-lg font-semibold rounded-xl" data-aos="zoom-in" data-aos-delay={80}>
                 Fazer Reserva
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
@@ -334,6 +332,8 @@ const PaginaInicial = () => {
               <Button
                 variant="outline"
                 className="border-2 border-white text-white hover:bg-white hover:text-primary px-10 py-6 text-lg rounded-xl bg-transparent"
+                data-aos="zoom-in"
+                data-aos-delay={120}
               >
                 Explorar Frota
               </Button>

@@ -6,14 +6,11 @@ import { Button } from "@/components/ui/button";
 const itensMenu = [
   { nome: "Início", caminho: "/" },
   { nome: "Sobre Nós", caminho: "/sobre" },
-  { nome: "Frota de Viaturas", caminho: "/frotas" },
+  { nome: "Frota", caminho: "/frotas" },
   { nome: "Serviços", caminho: "/servicos" },
   { nome: "Reservas", caminho: "/reservas" },
-  // { nome: 'Promoções', caminho: '/promocoes' },
   { nome: "Clientes", caminho: "/clientes" },
   { nome: "Contactos", caminho: "/contactos" },
-  { nome: "Entrar", caminho: "/login" },
-  { nome: "Registrar-se", caminho: "/register" },
 ];
 
 const CabecalhoNavegacao = () => {
@@ -102,8 +99,8 @@ const CabecalhoNavegacao = () => {
 
             {/* Botão de reserva */}
             <div className="hidden lg:flex items-center space-x-4">
-              <Link to="/reservas">
-                <Button className="botao-primario">Reservar Agora</Button>
+              <Link to="/login">
+                <Button className="botao-primario">Entrar na Conta</Button>
               </Link>
             </div>
 

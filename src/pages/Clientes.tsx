@@ -44,60 +44,26 @@ const Clientes = () => {
   ];
 
   const depoimentos = [
+
     {
-      nome: "João Manuel Silva",
-      cargo: "Director Executivo",
-      empresa: "Construtora Atlântida",
-      foto: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
-      comentario:
-        "A EV Grupo é nossa parceira há mais de 3 anos. Serviço impecável, carros sempre bem conservados e equipa muito profissional. Recomendo sem dúvidas.",
+      id: 1,
+      nome: "João Manuel",
+      cargo: "Empresário",
+      texto:
+        "A EV GRUPO sempre nos atendeu com pontualidade e viaturas em ótimo estado. Confiança total.",
       avaliacao: 5,
+      foto: null,
     },
     {
-      nome: "Dra. Ana Carvalho",
-      cargo: "Coordenadora de Eventos",
-      empresa: "MKT Solutions",
-      foto: "https://images.unsplash.com/photo-1494790108755-2616b612b977?w=100&h=100&fit=crop&crop=face",
-      comentario:
-        "Utilizamos os serviços da EV Grupo para todos os nossos eventos corporativos. A pontualidade e qualidade do atendimento são excepcionais.",
+      id: 2,
+      nome: "Dra. Ana C.",
+      comentario: "Consultora",
+      texto:
+        " O serviço executivo com motorista é excelente, recomendo.",
       avaliacao: 5,
+      foto: null,
     },
-    {
-      nome: "Carlos Mendes",
-      cargo: "Gerente de Operações",
-      empresa: "Petro Logistics",
-      foto: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face",
-      comentario:
-        "Excelente custo-benefício e flexibilidade nos contratos. A frota é diversificada e atende perfeitamente às nossas necessidades logísticas.",
-      avaliacao: 5,
-    },
-    {
-      nome: "Eng. Paulo Ferreira",
-      cargo: "Project Manager",
-      empresa: "Angola Construction",
-      foto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
-      comentario:
-        "Profissionalismo de alto nível. Sempre conseguem atender nossos pedidos urgentes com máxima eficiência. Parceria que vale a pena.",
-      avaliacao: 5,
-    },
-    {
-      nome: "Dra. Mariana Costa",
-      cargo: "Directora de RH",
-      empresa: "Tech Solutions Angola",
-      foto: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
-      comentario:
-        "O atendimento personalizado e a qualidade dos veículos fazem toda a diferença. Nossa empresa confia 100% nos serviços da EV Grupo.",
-      avaliacao: 5,
-    },
-    {
-      nome: "Dr. Miguel Santos",
-      cargo: "CEO",
-      empresa: "Consultoria Estratégica",
-      foto: "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?w=100&h=100&fit=crop&crop=face",
-      comentario:
-        "Serviço premium com preços justos. A EV Grupo entende as necessidades do mercado executivo angolano. Altamente recomendado.",
-      avaliacao: 5,
-    },
+
   ];
 
   const estatisticas = [
@@ -127,35 +93,52 @@ const Clientes = () => {
     return Array.from({ length: 5 }, (_, i) => (
       <Star
         key={i}
-        className={`w-4 h-4 ${
-          i < avaliacao ? "text-yellow-400 fill-current" : "text-gray-300"
-        }`}
+        className={`w-4 h-4 ${i < avaliacao ? "text-yellow-400 fill-current" : "text-gray-300"
+          }`}
       />
     ));
   };
 
+  const newLocal = <div className="flex flex-wrap gap-4 justify-center">
+    <Button
+      size="lg"
+      variant="secondary"
+      className="bg-white text-primary hover:bg-white/90"
+      onClick={() => window.location.href = "/contactos"}
+    >
+      Solicitar Proposta
+    </Button>
+    <Button
+      size="lg"
+      variant="outline"
+      className="bg-primary border-white text-white hover:bg-white hover:text-primary"
+      onClick={() => window.location.href = "/contactos"}
+    >
+      Agendar Reunião
+    </Button>
+  </div>;
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary via-primary-dark to-primary py-16">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4" data-aos="fade-down">
             Clientes & Parceiros
           </h1>
-          <p className="text-xl text-white/90 mb-6">
+          <p className="text-xl text-white/90 mb-6" data-aos="fade-up" data-aos-delay={60}>
             Conheça quem confia na EV Grupo para suas necessidades de mobilidade
           </p>
         </div>
       </section>
 
       {/* Estatísticas */}
-      <section className="py-16">
+  <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {estatisticas.map((stat, index) => {
               const IconeComponente = stat.icone;
               return (
-                <div key={index} className="text-center">
+        <div key={index} className="text-center" data-aos="fade-up" data-aos-delay={20 * index}>
                   <div className="mb-4 flex justify-center">
                     <div className="p-4 bg-primary/10 rounded-full">
                       <IconeComponente className="w-8 h-8 text-primary" />
@@ -175,104 +158,102 @@ const Clientes = () => {
       {/* Parceiros */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12 text-center">
-            Nossos Parceiros
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-            {parceiros.map((parceiro, index) => (
-              <div key={index} className="group">
-                <Card className="h-32 flex items-center justify-center hover-scale bg-white">
-                  <img
-                    src={parceiro.logo}
-                    alt={parceiro.nome}
-                    className="max-w-full max-h-20 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
-                  />
-                </Card>
-                <div className="text-center mt-2">
-                  <p className="font-medium text-sm">{parceiro.nome}</p>
-                  <Badge variant="secondary" className="text-xs mt-1">
-                    {parceiro.categoria}
-                  </Badge>
+          <h2 className="text-3xl font-bold mb-6 text-center" data-aos="fade-up">Nossos Parceiros</h2>
+
+          {/* Horizontal looping carousel */}
+          <div className="overflow-hidden">
+            <div className="flex items-center gap-8 animate-marquee" style={{ willChange: 'transform' }}>
+              {Array(2).fill(parceiros).flat().map((parceiro, idx) => (
+                <div key={idx} className="w-48 flex-shrink-0" data-aos="zoom-in" data-aos-delay={(idx % parceiros.length) * 30}>
+                  <div className="card-elegante h-28 flex items-center justify-center bg-white">
+                    <img
+                      src={parceiro.logo}
+                      alt={parceiro.nome}
+                      className="max-w-full max-h-16 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                    />
+                  </div>
+                  <div className="text-center mt-2">
+                    <p className="font-medium text-sm">{parceiro.nome}</p>
+                    <Badge variant="secondary" className="text-xs mt-1">{parceiro.categoria}</Badge>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <style>{`
+            @keyframes marquee {
+              0% { transform: translateX(0%); }
+              100% { transform: translateX(-50%); }
+            }
+            .animate-marquee {
+              display: flex;
+              gap: 2rem;
+              animation: marquee 20s linear infinite;
+            }
+          `}</style>
+        </div>
+      </section>
+
+      {/* Depoimentos */}
+      <section className="py-20 bg-muted">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="titulo-secao">O que Dizem Nossos Clientes</h2>
+            <p className="subtitulo max-w-3xl mx-auto">
+              A satisfação dos nossos clientes é a nossa maior recompensa. Veja
+              o que eles têm a dizer sobre nossos serviços.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {depoimentos.map((depoimento, idx) => (
+              <div key={depoimento.id} className="card-elegante" data-aos="fade-up" data-aos-delay={30 * idx}>
+                <div className="flex items-center mb-4">
+                  {[...Array(depoimento.avaliacao)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="w-5 h-5 text-yellow-400 fill-current"
+                    />
+                  ))}
+                </div>
+
+                <blockquote className="text-muted-foreground mb-6 leading-relaxed italic">
+                  "{depoimento.texto}"
+                </blockquote>
+
+                <div className="flex items-center">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                    <span className="text-primary font-semibold text-lg">
+                      {depoimento.nome
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")}
+                    </span>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-secondary">
+                      {depoimento.nome}
+                    </div>
+                    <div className="text-muted-foreground text-sm">
+                      {depoimento.cargo}
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
-
-      {/* Depoimentos */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12 text-center">
-            O que Dizem Nossos Clientes
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {depoimentos.map((depoimento, index) => (
-              <Card key={index} className="hover-scale shadow-elegant">
-                <CardHeader>
-                  <div className="flex items-center gap-4">
-                    <img
-                      src={depoimento.foto}
-                      alt={depoimento.nome}
-                      className="w-16 h-16 rounded-full object-cover"
-                    />
-                    <div>
-                      <CardTitle className="text-lg">
-                        {depoimento.nome}
-                      </CardTitle>
-                      <CardDescription>
-                        {depoimento.cargo}
-                        <br />
-                        <span className="text-primary font-medium">
-                          {depoimento.empresa}
-                        </span>
-                      </CardDescription>
-                    </div>
-                  </div>
-                  <div className="flex gap-1">
-                    {renderStars(depoimento.avaliacao)}
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="relative">
-                    <Quote className="absolute -top-2 -left-2 w-8 h-8 text-primary/20" />
-                    <p className="text-muted-foreground italic pl-6">
-                      "{depoimento.comentario}"
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-br from-primary via-primary-dark to-primary">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
-            Quer Fazer Parte desta Lista?
-          </h2>
-          <p className="text-xl text-white/90 mb-8">
+          <h2 className="text-3xl font-bold text-white mb-4" data-aos="fade-down">Quer Fazer Parte desta Lista?</h2>
+          <p className="text-xl text-white/90 mb-8" data-aos="fade-up" data-aos-delay={60}>
             Junte-se aos nossos clientes satisfeitos e descubra por que somos a
             escolha certa
           </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Button
-              size="lg"
-              variant="secondary"
-              className="bg-white text-primary hover:bg-white/90"
-            >
-              Solicitar Proposta
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-white text-white hover:bg-white hover:text-primary"
-            >
-              Agendar Reunião
-            </Button>
-          </div>
+          {newLocal}
         </div>
       </section>
     </div>

@@ -1,0 +1,8 @@
+[
+  { "id": 1, "name": "Económico", "slug": "economico" },
+  { "id": 2, "name": "Intermédio", "slug": "intermedio" },
+  { "id": 3, "name": "Luxo", "slug": "luxo" },
+  { "id": 4, "name": "SUV", "slug": "suv" },
+  { "id": 5, "name": "Pick-Up", "slug": "pickup" },
+  { "id": 6, "name": "Van & Grupo", "slug": "van-grupo" }
+]

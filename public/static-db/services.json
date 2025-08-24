@@ -1,0 +1,59 @@
+[
+  {
+    "id": 1,
+    "name": "Aluguer Diário",
+    "description": "Aluguer de viaturas por dia.",
+    "destaque": "Mais Popular",
+    "caracteristicas": ["Seguro incluso", "Assistência básica"]
+  },
+  {
+    "id": 2,
+    "name": "Aluguer Semanal",
+    "description": "Aluguer por semana com tarifas competitivas.",
+    "caracteristicas": ["Desconto por período", "Manutenção periódica"]
+  },
+  {
+    "id": 3,
+    "name": "Aluguer Mensal",
+    "description": "Soluções mensais para empresas e particulares.",
+    "caracteristicas": ["Condições para empresas", "Suporte dedicado"]
+  },
+  {
+    "id": 4,
+    "name": "Aluguer com Motorista",
+    "description": "Serviço com motorista profissional para maior comodidade.",
+    "destaque": "Premium",
+    "caracteristicas": ["Motorista profissional", "Seguro total"]
+  },
+  {
+    "id": 5,
+    "name": "Aluguer sem Motorista",
+    "description": "Aluguer tradicional sem motorista.",
+    "caracteristicas": ["Livre para conduzir", "Flexibilidade de locais"]
+  },
+  {
+    "id": 6,
+    "name": "Serviços Executivos e Transfers",
+    "description": "Transfers e serviços executivos para eventos e negócios.",
+    "destaque": "Empresarial",
+    "caracteristicas": ["Transfers aeroportuários", "Veículos de alto padrão"]
+  },
+  {
+    "id": 7,
+    "name": "Atendimento a Empresas e Eventos",
+    "description": "Atendimento corporativo e logística para eventos.",
+    "caracteristicas": ["Contrato empresarial", "Gestão de frota"]
+  },
+  {
+    "id": 8,
+    "name": "Entrega e Recolha de Viaturas",
+    "description": "Entrega e recolha no local do cliente.",
+    "caracteristicas": ["Entrega no endereço indicado", "Recolha agendada"]
+  },
+  {
+    "id": 9,
+    "name": "Assistência 24h",
+    "description": "Assistência rodoviária disponível 24 horas.",
+    "caracteristicas": ["Suporte em estrada", "Reboque e assistência técnica"]
+  }
+]
