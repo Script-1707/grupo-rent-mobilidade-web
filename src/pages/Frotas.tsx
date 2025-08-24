@@ -330,9 +330,12 @@ const Frotas = ({ token }) => {
                     </div>
                   </div>
 
-                  <Button className="w-full bg-primary hover:bg-gradient-primary/90">
+                    <Button
+                    className="w-full bg-primary hover:bg-gradient-primary/90"
+                    onClick={() => window.location.href = "/reservas"}
+                    >
                     Reservar
-                  </Button>
+                    </Button>
                 </CardContent>
               </Card>
             ))
