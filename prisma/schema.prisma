@@ -29,8 +29,113 @@ model User {
   providerId    String?      // provider-specific id (e.g., Google sub)
   emailVerified DateTime?
   image         String?
+  // reservas feitas pelo utilizador
+  reservations  Reservation[]
   createdAt     DateTime     @default(now())
   updatedAt     DateTime     @updatedAt
 
   @@map("users")
+}
+
+// Categorias para os veículos (seed vem de public/static-db/categories.json)
+model Category {
+  id        Int      @id @default(autoincrement())
+  name      String
+  slug      String   @unique
+  vehicles  Vehicle[]
+  createdAt DateTime @default(now())
+
+  @@map("categories")
+}
+
+// Serviços / Taxas adicionais (baseado em public/static-db/taxas-adicionais.json)
+model Service {
+  id        Int      @id @default(autoincrement())
+  key       String   @unique // ex: taxa_motorista
+  label     String
+  amount    Int
+  // relações com reservas (serviços adicionados a uma reserva)
+  reservationServices ReservationService[]
+  createdAt DateTime @default(now())
+
+  @@map("services")
+}
+
+// Veículos e relação com Category. description fica na tabela vehicles.
+model Vehicle {
+  id            Int      @id @default(autoincrement())
+  name          String   @unique
+  description   String?
+  image         String?
+  seats         Int?
+  transmission  String?
+  fuel_type     String?
+  specifications Json
+  price_daily   Int?
+  category      Category @relation(fields: [categoryId], references: [id])
+  categoryId    Int
+  // reservas feitas para este veículo
+  reservations  Reservation[]
+  createdAt     DateTime @default(now())
+
+  @@map("vehicles")
+}
+
+// Model para o formulário de contactos
+model Contact {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  phone     String?
+  subject   String?
+  message   String
+  read      Boolean  @default(false)
+  source    String?  // opcional: ex. 'site', 'app', 'promo'
+  createdAt DateTime @default(now())
+
+  @@map("contacts")
+}
+
+// Status das reservas
+enum ReservationStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
+
+// Reservas feitas pelos utilizadores para um veículo
+model Reservation {
+  id             Int               @id @default(autoincrement())
+  user           User              @relation(fields: [userId], references: [id])
+  userId         Int
+  vehicle        Vehicle           @relation(fields: [vehicleId], references: [id])
+  vehicleId      Int
+  startDate      DateTime
+  endDate        DateTime
+  pickupLocation String?
+  dropoffLocation String?
+  status         ReservationStatus @default(PENDING)
+  totalAmount    Int?              // valor total em centavos no momento da reserva
+  services       ReservationService[]
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+
+  @@map("reservations")
+}
+
+// Tabela de junção que regista serviços adicionais ligados a uma reserva
+model ReservationService {
+  id            Int         @id @default(autoincrement())
+  reservation   Reservation @relation(fields: [reservationId], references: [id])
+  reservationId Int
+  service       Service     @relation(fields: [serviceId], references: [id])
+  serviceId     Int
+  quantity      Int         @default(1)
+  // valor por unidade no momento da reserva (snapshot), em centavos
+  amount        Int
+  createdAt     DateTime    @default(now())
+
+  @@map("reservation_services")
+  @@unique([reservationId, serviceId])
 }

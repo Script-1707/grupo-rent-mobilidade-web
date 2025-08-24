@@ -4,70 +4,102 @@
 
 **URL**: https://lovable.dev/projects/0faefd93-6643-4581-aeaa-b84bd03df094
 
-## How can I edit this code?
+# Grupo Rent Mobilidade (frontend)
 
-There are several ways of editing your application.
+Este repositório contém a aplicação web (Vite + React + TypeScript) usada pelo projeto Grupo Rent Mobilidade.
 
-**Use Lovable**
+## Objetivo deste README
+Passos mínimos para configurar o ambiente de desenvolvimento, incluindo Prisma (gerar client, aplicar schema/migrations e rodar seed). Comandos pensados para PowerShell no Windows.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/0faefd93-6643-4581-aeaa-b84bd03df094) and start prompting.
+> Observação: o projeto usa `type: "module"` no `package.json`. O seed script já foi adaptado para ESM (`prisma/seed.js`).
 
-Changes made via Lovable will be committed automatically to this repo.
+## Requisitos
+- Node.js (v18+ recomendado)
+- npm
+- Acesso ao banco de dados MySQL configurado em `.env` (variável `DATABASE_URL`)
 
-**Use your preferred IDE**
+## Passos de setup (PowerShell)
+1. Instalar dependências
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+```powershell
+cd C:\\laragon\\www\\grupo-rent-mobilidade-web
+npm install
+```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+2. Gerar Prisma Client
 
-Follow these steps:
+```powershell
+npx prisma generate
+# ou: npm run prisma:generate
+```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+3. Aplicar schema / migrations
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Existem duas abordagens dependendo das permissões do usuário do banco:
 
-# Step 3: Install the necessary dependencies.
-npm i
+Opção A — (preferível quando o usuário do DB tem permissões para criar bancos)
+- Use o fluxo de migrations (mantém histórico de alterações):
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```powershell
+npx prisma migrate dev --name init
+# ou: npm run prisma:migrate
+```
+
+Se ocorrer um erro sobre criação do _shadow database_ (P3014 / P1010), é porque o usuário do MySQL não tem permissão para criar bancos. Neste caso veja as alternativas abaixo.
+
+Opção B — (workaround rápido, não gera histórico de migrations)
+- Sincroniza o schema diretamente com o banco (cria/atualiza tabelas conforme `schema.prisma`) sem gerar arquivos de migrations:
+
+```powershell
+npx prisma db push
+```
+
+Use esta opção para desenvolvimento rápido ou quando não for possível conceder permissões ao usuário do banco.
+
+Opção C — usar `shadowDatabaseUrl` (avançado)
+- Crie um banco que o usuário possa usar como shadow DB e adicione no `.env`:
+
+```
+SHADOW_DATABASE_URL="mysql://user:pass@host:port/shadow_db"
+```
+
+- Em `prisma/schema.prisma` adicione `shadowDatabaseUrl = env("SHADOW_DATABASE_URL")` no bloco `datasource db`.
+- Então rode `npx prisma migrate dev` novamente.
+
+4. Rodar seed
+
+```powershell
+# após gerar o client e garantir que as tabelas existem (via migrate ou db push)
+node prisma/seed.js
+# ou: npm run prisma:seed
+```
+
+5. Executar a aplicação (desenvolvimento)
+
+```powershell
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Problemas comuns
+- Erro P3014 / P1010 ao rodar migrations: "could not create the shadow database" — significa que o usuário não pode criar bancos. Soluções: conceder permissão CREATE DATABASE ao usuário, usar `SHADOW_DATABASE_URL` apontando para um banco já existente, ou usar `prisma db push` como fallback.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- Seed com erro `require is not defined`: acontece em projetos ESM quando o seed usa `require`. O seed aqui foi convertido para ESM (`import`) e deve rodar com `node prisma/seed.js`.
 
-**Use GitHub Codespaces**
+## Scripts úteis (em `package.json`)
+- `npm run dev` — roda o Vite em modo dev
+- `npm run build` — build de produção
+- `npm run prisma:generate` — `prisma generate`
+- `npm run prisma:migrate` — `prisma migrate dev --name init`
+- `npm run prisma:seed` — `node prisma/seed.js`
+- `npm run prisma:studio` — `prisma studio`
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Fluxo recomendado para desenvolvimento local
+1. Configurar `.env` com `DATABASE_URL`
+2. `npm install`
+3. `npx prisma generate`
+4. Se possível: `npx prisma migrate dev --name init` (ou `db push` se não for possível)
+5. `node prisma/seed.js`
+6. `npm run dev`
 
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/0faefd93-6643-4581-aeaa-b84bd03df094) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## Notas finais
+Se quiser que eu configure `shadowDatabaseUrl` automaticamente, ou que eu gere os arquivos de migration localmente com `--create-only` e te deixe as migrations no repositório, diga qual opção prefere e eu faço as alterações.

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { UserPlus, ArrowRight, LogIn } from "lucide-react";
 import toast from "react-hot-toast";
+import { register as authRegister } from '@/services/authService';
 const RegisterPage = () => {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
@@ -22,36 +23,22 @@ const RegisterPage = () => {
     setLoading(true);
 
     try {
-      console.log(nome, email, senha, confirmarSenha);
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/auth/register`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username: nome,
-            email: email,
-            password: senha,
-          }),
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Erro ao criar conta");
+      const resp = await authRegister({ name: nome, email, password: senha });
+      if (!resp.success) {
+        toast.error(resp.message || 'Erro ao criar conta');
+        setLoading(false);
+        return;
       }
 
-      const data = await response.json();
-
-      toast.success("Conta criada com sucesso!", { duration: 2000 });
-
-      setTimeout(() => {
-        navigate("/login");
-      }, 2000);
-    } catch (error) {
-      alert(error.message);
-      toast.error(error.message || "Erro ao criar conta");
+      toast.success('Conta criada com sucesso!', { duration: 2000 });
+      setTimeout(() => navigate('/login'), 1200);
+    } catch (err: unknown) {
+      let message = 'Erro ao criar conta';
+      if (typeof err === 'object' && err !== null && 'message' in err) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        message = (err as any).message as string;
+      }
+      toast.error(message);
     } finally {
       setLoading(false);
     }

@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { createContactRecord } from '@/services/contactService';
 
 const informacoesContacto = [
   {
@@ -70,32 +71,29 @@ const Contactos = () => {
     setEnviando(true);
 
     try {
-      const response = await fetch(
-        "http://localhost:8082/api/contact-inquiries",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: formulario.nome,
-            email: formulario.email,
-            phone: formulario.telefone,
-            subject: formulario.assunto,
-            message: formulario.mensagem,
-          }),
-        }
-      );
+      const payload = {
+        name: formulario.nome,
+        email: formulario.email,
+        phone: formulario.telefone,
+        subject: formulario.assunto,
+        message: formulario.mensagem,
+      };
 
-      if (!response.ok) {
-        throw new Error("Erro ao enviar a mensagem.");
+      const result = await createContactRecord(payload);
+
+      if (!result.success) {
+        toast({
+          title: 'Erro ao enviar mensagem',
+          description: result.message || 'Por favor tente novamente mais tarde.',
+          variant: 'destructive',
+        });
+        setEnviando(false);
+        return;
       }
 
-      const data = await response.json();
-
       toast({
-        title: "Mensagem enviada com sucesso!",
-        description: `Obrigado ${data.name}, entraremos em contacto consigo brevemente.`,
+        title: 'Mensagem enviada com sucesso!',
+        description: `Obrigado, entraremos em contacto consigo brevemente.`,
       });
 
       // Resetar formulário

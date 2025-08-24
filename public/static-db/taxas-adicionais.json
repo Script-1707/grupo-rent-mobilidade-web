@@ -1,10 +1,10 @@
-{
-  "taxa_motorista": 30000,
-  "taxa_entrega": 10000,
-  "taxa_deslocacao_provincia": 150000,
-  "multa_por_atraso": 25000,
-  "caucao_baixo_porte": 150000,
-  "caucao_medio_porte": 250000,
-  "caucao_alto_porte": 500000,
-  "multa_sair_luanda_sem_aviso_previo": 500000
-}
+[
+  { "servico": "Taxa motorista", "preco": 30000 },
+  { "servico": "Taxa entrega", "preco": 10000 },
+  { "servico": "Taxa deslocação província", "preco": 150000 },
+  { "servico": "Multa por atraso", "preco": 25000 },
+  { "servico": "Caução baixo porte", "preco": 150000 },
+  { "servico": "Caução médio porte", "preco": 250000 },
+  { "servico": "Caução alto porte", "preco": 500000 },
+  { "servico": "Multa sair Luanda sem aviso prévio", "preco": 500000 }
+]
