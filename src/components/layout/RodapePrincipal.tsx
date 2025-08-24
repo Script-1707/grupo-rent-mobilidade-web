@@ -130,7 +130,7 @@ const RodapePrincipal = () => {
               <div className="flex items-start space-x-3">
                 <Clock className="w-5 h-5 text-primary mt-1" />
                 <div>
-                  <p className="text-secondary-foreground/80">Segunda - Sexta: 8h - 18h</p>
+                  <p className="text-secondary-foreground/80">Segunda - Sexta: 8h - 17h</p>
                   <p className="text-secondary-foreground/80">Sábado: 8h - 14h</p>
                 </div>
               </div>
