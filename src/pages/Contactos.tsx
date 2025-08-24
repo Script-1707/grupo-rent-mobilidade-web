@@ -198,7 +198,7 @@ const Contactos = () => {
                   </p>
                   <Button className="botao-outline mt-4" asChild>
                     <a
-                      href="https://share.google/jpw6iQ1MEFyJjLgfh"
+                      href="https://maps.app.goo.gl/npVAkS4eUcTTeH7M6"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
