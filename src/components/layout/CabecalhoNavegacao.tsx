@@ -99,8 +99,8 @@ const CabecalhoNavegacao = () => {
 
             {/* Botão de reserva */}
             <div className="hidden lg:flex items-center space-x-4">
-              <Link to="/login">
-                <Button className="botao-primario">Entrar na Conta</Button>
+              <Link to="/reservas">
+                <Button className="botao-primario">Faça Sua Reserva</Button>
               </Link>
             </div>
 

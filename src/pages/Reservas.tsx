@@ -380,7 +380,7 @@ const Reservas = () => {
               <div className="grid gap-6 md:grid-cols-2">
                 {/* Left: form / selection steps */}
                 <form className="space-y-6">
-                  {step === 1 && (
+                  <div className={`transition-all duration-500 ease-in-out transform overflow-hidden ${step === 1 ? 'opacity-100 translate-x-0 max-h-[2000px] scale-100' : 'opacity-0 -translate-x-6 max-h-0 scale-95 pointer-events-none'}`} aria-hidden={step !== 1}>
                     <div className="grid md:grid-cols-1 gap-6">
                       <div className="space-y-2">
                         <Label>Viatura</Label>
@@ -430,9 +430,9 @@ const Reservas = () => {
                         </div>
                       </div>
                     </div>
-                  )}
+                  </div>
 
-                  {step === 2 && (
+                  <div className={`transition-all duration-500 ease-in-out transform overflow-hidden ${step === 2 ? 'opacity-100 translate-x-0 max-h-[2000px] scale-100' : 'opacity-0 -translate-x-6 max-h-0 scale-95 pointer-events-none'}`} aria-hidden={step !== 2}>
                     <div className="space-y-6">
                       {/* Bloco Levantamento */}
                       <div className="p-4 border rounded-2xl shadow-sm space-y-4">
@@ -536,9 +536,9 @@ const Reservas = () => {
                         </div>
                       </div>
                     </div>
-                  )}
+                  </div>
 
-                  {step === 3 && (
+                  <div className={`transition-all duration-500 ease-in-out transform overflow-hidden ${step === 3 ? 'opacity-100 translate-x-0 max-h-[2000px] scale-100' : 'opacity-0 -translate-x-6 max-h-0 scale-95 pointer-events-none'}`} aria-hidden={step !== 3}>
                     <div className="space-y-6">
                       <div className="grid md:grid-cols-3 gap-6">
                         <Input
@@ -579,8 +579,9 @@ const Reservas = () => {
                         rows={3}
                       />
                     </div>
-                  )}
-                  {step === 4 && (
+                  </div>
+
+                  <div className={`transition-all duration-500 ease-in-out transform overflow-hidden ${step === 4 ? 'opacity-100 translate-x-0 max-h-[2000px] scale-100' : 'opacity-0 -translate-x-6 max-h-0 scale-95 pointer-events-none'}`} aria-hidden={step !== 4}>
                     <div className="space-y-6 text-left">
                       <p className="text-lg">Selecione as taxas adicionais</p>
 
@@ -611,7 +612,7 @@ const Reservas = () => {
                         </div>
                       )}
                     </div>
-                  )}
+                  </div>
 
                   {/* Botões de Navegação */}
                   <div className="flex justify-between">

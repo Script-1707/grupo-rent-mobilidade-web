@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   MapPin,
   Phone,
@@ -13,6 +13,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { createContactRecord } from '@/services/contactService';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const informacoesContacto = [
   {
@@ -46,6 +48,10 @@ const informacoesContacto = [
 ];
 
 const Contactos = () => {
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true });
+  }, []);
+
   const [formulario, setFormulario] = useState({
     nome: "",
     email: "",
@@ -119,7 +125,7 @@ const Contactos = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 gradiente-hero text-white">
+  <section className="py-20 gradiente-hero text-white" data-aos="fade-up" data-aos-duration="1000">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
@@ -138,7 +144,7 @@ const Contactos = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {informacoesContacto.map((info, indice) => (
-              <div key={indice} className="card-elegante text-center group">
+              <div key={indice} className="card-elegante text-center group" data-aos="fade-up" data-aos-delay={indice * 100}>
                 <div className="flex items-center justify-center w-16 h-16 bg-primary/10 rounded-2xl mb-6 mx-auto group-hover:bg-primary/20 transition-colors">
                   <info.icone className="w-8 h-8 text-primary" />
                 </div>
@@ -175,7 +181,7 @@ const Contactos = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Formulário de Contacto */}
-            <div>
+            <div data-aos="fade-right">
               <h2 className="titulo-secao">Envie-nos uma Mensagem</h2>
               <p className="subtitulo mb-8">
                 Preencha o formulário abaixo e entraremos em contacto consigo o
@@ -304,7 +310,7 @@ const Contactos = () => {
             </div>
 
             {/* Mapa e Contactos Rápidos */}
-            <div className="space-y-8">
+            <div className="space-y-8" data-aos="fade-left">
               {/* Mapa */}
               <div>
                 <h3 className="text-2xl font-bold text-secondary mb-4">
@@ -343,6 +349,8 @@ const Contactos = () => {
                   <a
                     href="https://wa.me/244976045538"
                     className="card-elegante flex items-center space-x-4 hover:bg-green-50 transition-colors group"
+                    data-aos="fade-up"
+                    data-aos-delay="0"
                   >
                     <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center group-hover:bg-green-200 transition-colors">
                       <MessageCircle className="w-6 h-6 text-green-600" />
@@ -362,6 +370,8 @@ const Contactos = () => {
                   <a
                     href="tel:+244976045538"
                     className="card-elegante flex items-center space-x-4 hover:bg-red-50 transition-colors group"
+                    data-aos="fade-up"
+                    data-aos-delay="100"
                   >
                     <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center group-hover:bg-red-200 transition-colors">
                       <Phone className="w-6 h-6 text-red-600" />
@@ -381,6 +391,8 @@ const Contactos = () => {
                   <a
                     href="mailto:evgrupoprest@gmail.com"
                     className="card-elegante flex items-center space-x-4 hover:bg-blue-50 transition-colors group"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
                   >
                     <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center group-hover:bg-blue-200 transition-colors">
                       <Mail className="w-6 h-6 text-blue-600" />
@@ -405,7 +417,7 @@ const Contactos = () => {
       </section>
 
       {/* FAQ Rápido */}
-      <section className="py-20">
+      <section className="py-20" data-aos="fade-up">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="titulo-secao">Perguntas Frequentes</h2>
@@ -415,7 +427,7 @@ const Contactos = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="card-elegante">
+            <div className="card-elegante" data-aos="fade-up" data-aos-delay="0">
               <h3 className="font-bold text-secondary mb-3">
                 Qual é o horário de atendimento?
               </h3>
@@ -425,7 +437,7 @@ const Contactos = () => {
               </p>
             </div>
 
-            <div className="card-elegante">
+            <div className="card-elegante" data-aos="fade-up" data-aos-delay="100">
               <h3 className="font-bold text-secondary mb-3">
                 Fazem entrega e recolha?
               </h3>
@@ -435,7 +447,7 @@ const Contactos = () => {
               </p>
             </div>
 
-            <div className="card-elegante">
+            <div className="card-elegante" data-aos="fade-up" data-aos-delay="200">
               <h3 className="font-bold text-secondary mb-3">
                 Que documentos preciso?
               </h3>
@@ -445,7 +457,7 @@ const Contactos = () => {
               </p>
             </div>
 
-            <div className="card-elegante">
+            <div className="card-elegante" data-aos="fade-up" data-aos-delay="300">
               <h3 className="font-bold text-secondary mb-3">
                 Como fazer uma reserva?
               </h3>
