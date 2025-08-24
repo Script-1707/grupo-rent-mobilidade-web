@@ -693,11 +693,29 @@ const Reservas = () => {
                       </div>
                     </div>
 
-                    <div className="mt-4 flex gap-2">
-                      <Button type="button" variant="outline" onClick={() => calcularPreco()}>
-                        Calcular Preço
+                    <div className="mt-4 flex gap-3 items-center">
+                      <Button
+                        type="button"
+                        variant="outline"
+                        onClick={() => calcularPreco()}
+                        disabled={loadingPreco}
+                        className="px-6 py-3 text-base md:text-lg flex items-center gap-2"
+                      >
+                        {loadingPreco ? (
+                          <>
+                            <Loader2 className="w-5 h-5 animate-spin" />
+                            <span>Calculando...</span>
+                          </>
+                        ) : (
+                          <span>Calcular Preço</span>
+                        )}
                       </Button>
-                      <Button type="button" onClick={handleSubmit} className="bg-red-600 hover:bg-red-700 text-white">
+
+                      <Button
+                        type="button"
+                        onClick={handleSubmit}
+                        className="px-6 py-3 text-base md:text-lg bg-red-600 hover:bg-red-700 text-white"
+                      >
                         Confirmar Reserva
                       </Button>
                     </div>
