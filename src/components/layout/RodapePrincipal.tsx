@@ -110,7 +110,7 @@ const RodapePrincipal = () => {
                 <MapPin className="w-5 h-5 text-primary mt-1" />
                 <div>
                   <p className="text-secondary-foreground/80">
-                    Luanda, Corimba , Edifício Vegs Comercial
+                    Luanda, Corimba, Edifício Vegs Comercial
                   </p>
                 </div>
               </div>
