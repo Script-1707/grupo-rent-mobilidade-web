@@ -67,7 +67,7 @@ const RodapePrincipal = () => {
             <ul className="space-y-3">
               {[
                 { nome: 'Sobre Nós', caminho: '/sobre' },
-                { nome: 'Nossa Frota', caminho: '/frota' },
+                { nome: 'Nossa Frota', caminho: '/frotas' },
                 { nome: 'Serviços', caminho: '/servicos' },
                 { nome: 'Reservas', caminho: '/reservas' },
                 { nome: 'Contactos', caminho: '/contactos' }
