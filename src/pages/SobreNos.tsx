@@ -69,7 +69,7 @@ const SobreNos = () => {
             <p className="text-xl md:text-2xl leading-relaxed" data-aos="fade-up" data-aos-delay="80">
               Há mais de 10 anos, somos a referência em aluguer de viaturas em Angola,
               oferecendo soluções de mobilidade seguras, confortáveis e acessíveis para
-              empresas e particulares.
+              empresas e particulares
             </p>
           </div>
         </div>

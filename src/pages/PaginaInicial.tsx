@@ -213,7 +213,7 @@ const PaginaInicial = () => {
               Localização
               </h3>
               <p className="text-muted-foreground mb-4">
-              Luanda, Corimba , Edifício Vegs Comercial
+              Luanda, Corimba, Edifício Vegs Comercial
               </p>
               <span className="text-blue-600 font-semibold">Ver no Mapa</span>
             </a>

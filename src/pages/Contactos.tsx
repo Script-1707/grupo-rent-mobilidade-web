@@ -132,8 +132,8 @@ const Contactos = () => {
               Contacte-nos
             </h1>
             <p className="text-xl md:text-2xl leading-relaxed">
-              Estamos aqui para ajudá-lo. Entre em contacto connosco através de
-              qualquer um dos nossos canais de atendimento.
+              Entre em contacto connosco através de
+              qualquer um dos nossos canais de atendimento
             </p>
           </div>
         </div>
