@@ -20,7 +20,7 @@ const categoriasCarros = [
     nome: "Económico",
     descricao: "Carros eficientes e acessíveis para o dia a dia",
     icone: Car,
-    preco: "Desde 8.000 Kz/dia",
+    preco: "Desde 47.000 Kz/dia",
     destaque: false,
   },
   {
@@ -28,7 +28,7 @@ const categoriasCarros = [
     nome: "Intermédio",
     descricao: "Conforto e economia em perfeito equilíbrio",
     icone: Car,
-    preco: "Desde 12.000 Kz/dia",
+    preco: "Desde 100.000 Kz/dia",
     destaque: false,
   },
   {
@@ -36,7 +36,7 @@ const categoriasCarros = [
     nome: "Luxo",
     descricao: "Viaturas premium para ocasiões especiais",
     icone: Star,
-    preco: "Desde 25.000 Kz/dia",
+    preco: "Desde 400.000 Kz/dia",
     destaque: true,
   },
   {
@@ -44,7 +44,7 @@ const categoriasCarros = [
     nome: "SUV",
     descricao: "Versatilidade e robustez para qualquer terreno",
     icone: Car,
-    preco: "Desde 18.000 Kz/dia",
+    preco: "Desde 250.000 Kz/dia",
     destaque: false,
   },
   {
@@ -52,7 +52,7 @@ const categoriasCarros = [
     nome: "Pick-Up",
     descricao: "Força e capacidade para trabalho e aventura",
     icone: Car,
-    preco: "Desde 15.000 Kz/dia",
+    preco: "Desde 152.000 Kz/dia",
     destaque: false,
   },
   {
@@ -60,7 +60,7 @@ const categoriasCarros = [
     nome: "Van & Grupo",
     descricao: "Espaço para grandes grupos e famílias",
     icone: Users,
-    preco: "Desde 20.000 Kz/dia",
+    preco: "Desde 380.000 Kz/dia",
     destaque: false,
   },
 ];
@@ -68,7 +68,7 @@ const categoriasCarros = [
 
 const estatisticas = [
   { numero: "10+", label: "Anos de Experiência" },
-  { numero: "100+", label: "Carros na Frota" },
+  { numero: "500+", label: "Carros na Frota" },
   { numero: "5000+", label: "Clientes Satisfeitos" },
   { numero: "24/7", label: "Suporte Disponível" },
 ];
@@ -139,7 +139,9 @@ const PaginaInicial = () => {
                 </p>
 
                 <div className="flex items-center justify-between">
-                
+                  <span className="text-xl font-bold text-primary">
+                    {categoria.preco}
+                  </span>
                   <Link to={`/frotas`}>
                     <Button variant="ghost" className="group">
                       Ver Carros
@@ -162,7 +164,6 @@ const PaginaInicial = () => {
         </div>
       </section>
 
-  
       {/* Chamadas Rápidas */}
       <section className="py-20">
         <div className="container mx-auto px-4">
@@ -241,8 +242,8 @@ const PaginaInicial = () => {
 
       {/* Call to Action Final */}
       <section className="py-20 gradiente-hero">
-          <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6" data-aos="fade-down"> 
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6" data-aos="fade-down">
             Pronto para a Sua Próxima Viagem?
           </h2>
           <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay={40}>

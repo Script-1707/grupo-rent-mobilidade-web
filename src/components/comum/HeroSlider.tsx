@@ -23,8 +23,8 @@ const slidesHero = [
     subtitulo: "Mais de 10 anos oferecendo as melhores soluções de mobilidade",
     descricao: "Confiança de milhares de clientes e parceiros em todo o país.",
     imagem: heroImage2,
-    botaoPrincipal: "Conhecer Mais",
-    botaoSecundario: "Contactar",
+    botaoPrincipal: "Reservar Agora",
+    botaoSecundario: "Ver Frota",
   },
   {
     id: 3,
@@ -33,8 +33,8 @@ const slidesHero = [
     descricao:
       "Nossa equipe está sempre pronta para atendê-lo em qualquer situação.",
     imagem: heroImage1,
-    botaoPrincipal: "Emergência",
-    botaoSecundario: "Saber Mais",
+    botaoPrincipal: "Reservar Agora",
+    botaoSecundario: "Ver Frota",
   },
 ];
 
@@ -92,9 +92,8 @@ const HeroSlider = () => {
         <img
           src={slide.imagem}
           alt={slide.titulo}
-          className={`w-full h-full object-cover transition-all duration-1000 ${
-            animando ? "scale-110" : "scale-100"
-          }`}
+          className={`w-full h-full object-cover transition-all duration-1000 ${animando ? "scale-110" : "scale-100"
+            }`}
         />
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20"></div>
@@ -105,11 +104,10 @@ const HeroSlider = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl">
             <div
-              className={`transition-all duration-700 ${
-                animando
+              className={`transition-all duration-700 ${animando
                   ? "opacity-0 translate-y-10"
                   : "opacity-100 translate-y-0"
-              }`}
+                }`}
             >
               {/* Título principal */}
               <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
@@ -129,7 +127,7 @@ const HeroSlider = () => {
               {/* Botões de ação */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/reservas">
-                  <Button className="botao-primario text-lg px-10 py-6 group">
+                  <Button className="botao-primario  text-lg px-10 py-6 group">
                     {slide.botaoPrincipal}
                     <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
@@ -138,7 +136,7 @@ const HeroSlider = () => {
                 <Link to="/frotas">
                   <Button
                     variant="outline"
-                    className="border-2 border-white text-white hover:bg-white hover:text-secondary text-lg px-10 py-6 bg-transparent"
+                    className="border-2 text-white hover:bg-white hover:text-secondary text-lg px-10 py-6 bg-transparent group"
                   >
                     {slide.botaoSecundario}
                   </Button>
@@ -156,11 +154,10 @@ const HeroSlider = () => {
             <button
               key={indice}
               onClick={() => irParaSlide(indice)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                indice === slideAtual
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${indice === slideAtual
                   ? "bg-primary scale-125"
                   : "bg-white/50 hover:bg-white/75"
-              }`}
+                }`}
               aria-label={`Ir para slide ${indice + 1}`}
             />
           ))}
