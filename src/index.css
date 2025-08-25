@@ -170,8 +170,7 @@ All colors MUST be HSL.
   /* Títulos com estilo */
   .titulo-secao {
     @apply text-4xl md:text-5xl font-bold text-secondary mb-6 
-           relative after:content-[''] after:absolute after:bottom-0 after:left-0 
-           after:w-20 after:h-1 after:bg-primary after:rounded-full;
+           relative after:content-[''];
   }
 
   .subtitulo {
